@@ -17,3 +17,7 @@ struct PropertyKeys {
     static let loginSegue = "ShowLoginSegue"
     static let signUpSegue = "ShowSignUpSegue"
 }
+
+enum AnswerType {
+    case alive, dead
+}
