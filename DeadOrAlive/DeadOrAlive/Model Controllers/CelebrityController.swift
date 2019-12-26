@@ -14,7 +14,11 @@ class CelebrityController {
         Celebrity(id: 02, name: "Ned", imageURL: URL(string: "github.com")!, factoid: "sad", birthYear: 1940, alive: false),
         Celebrity(id: 11, name: "Ted", imageURL: URL(string: "aol.com")!, factoid: "angry", birthYear: 1946, alive: true)]
     
-    
+    func getRandomCelebrity() -> Celebrity {
+        let index = Int.random(in: 0..<celebrities.count)
+        
+        return celebrities.remove(at: index)
+    }
 }
 
 struct Celebrity {
