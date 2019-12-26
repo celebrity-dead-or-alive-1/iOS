@@ -8,7 +8,14 @@
 
 import Foundation
 
-
+class CelebrityController {
+    var celebrities: [Celebrity] = [
+        Celebrity(id: 01, name: "Jed", imageURL: URL(string: "google.com")!, factoid: "happy", birthYear: 1942, alive: true),
+        Celebrity(id: 02, name: "Ned", imageURL: URL(string: "github.com")!, factoid: "sad", birthYear: 1940, alive: false),
+        Celebrity(id: 11, name: "Ted", imageURL: URL(string: "aol.com")!, factoid: "angry", birthYear: 1946, alive: true)]
+    
+    
+}
 
 struct Celebrity {
     let id: Int
