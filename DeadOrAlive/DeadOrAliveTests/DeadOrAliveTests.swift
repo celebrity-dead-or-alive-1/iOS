@@ -14,16 +14,16 @@ class DeadOrAliveTests: XCTestCase {
     func testGettingCelebrity() {
         let gameController = GameController()
         
-        XCTAssertEqual(gameController.celebrities.count, 3)
+        XCTAssertEqual(gameController.testCelebrities.count, 3)
         
         let _ = gameController.getRandomCelebrity()
         
-        XCTAssertEqual(gameController.celebrities.count, 2)
+        XCTAssertEqual(gameController.testCelebrities.count, 2)
     }
     
     func testCorrectTrueAnswer() {
         let gameController = GameController()
-        let celebrity = gameController.celebrities[0]
+        let celebrity = gameController.testCelebrities[0]
         
         XCTAssertEqual(gameController.numberRight, 0)
         XCTAssertEqual(gameController.numberWrong, 0)
@@ -38,7 +38,7 @@ class DeadOrAliveTests: XCTestCase {
     
     func testCorrectFalseAnswer() {
         let gameController = GameController()
-        let celebrity = gameController.celebrities[1]
+        let celebrity = gameController.testCelebrities[1]
         
         XCTAssertEqual(gameController.numberRight, 0)
         XCTAssertEqual(gameController.numberWrong, 0)
@@ -53,7 +53,7 @@ class DeadOrAliveTests: XCTestCase {
     
     func testWrongTrueAnswer() {
         let gameController = GameController()
-        let celebrity = gameController.celebrities[1]
+        let celebrity = gameController.testCelebrities[1]
         
         XCTAssertEqual(gameController.numberRight, 0)
         XCTAssertEqual(gameController.numberWrong, 0)
@@ -68,7 +68,7 @@ class DeadOrAliveTests: XCTestCase {
     
     func testWrongFalseAnswer() {
         let gameController = GameController()
-        let celebrity = gameController.celebrities[0]
+        let celebrity = gameController.testCelebrities[0]
         
         XCTAssertEqual(gameController.numberRight, 0)
         XCTAssertEqual(gameController.numberWrong, 0)
@@ -83,8 +83,8 @@ class DeadOrAliveTests: XCTestCase {
     
     func testGameStatusRemainsActive() {
         let gameController = GameController()
-        let celebrity0 = gameController.celebrities[0]
-        let celebrity1 = gameController.celebrities[1]
+        let celebrity0 = gameController.testCelebrities[0]
+        let celebrity1 = gameController.testCelebrities[1]
         
         XCTAssertEqual(gameController.gameStatus, .active)
         
@@ -96,9 +96,9 @@ class DeadOrAliveTests: XCTestCase {
     
     func testGameStatusChangesToFinished() {
         let gameController = GameController()
-        let celebrity0 = gameController.celebrities[0]
-        let celebrity1 = gameController.celebrities[1]
-        let celebrity2 = gameController.celebrities[2]
+        let celebrity0 = gameController.testCelebrities[0]
+        let celebrity1 = gameController.testCelebrities[1]
+        let celebrity2 = gameController.testCelebrities[2]
         
         XCTAssertEqual(gameController.gameStatus, .active)
         

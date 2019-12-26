@@ -19,7 +19,7 @@ class GameController {
         return numberRight + numberWrong
     }
     /// This is the list of celebrities that will be tested during this game, not the full list.
-    var celebrities: [Celebrity] = [
+    var testCelebrities: [Celebrity] = [
         Celebrity(id: 01, name: "Jed", imageURL: URL(string: "google.com")!, factoid: "happy", birthYear: 1942, isAlive: true),
         Celebrity(id: 02, name: "Ned", imageURL: URL(string: "github.com")!, factoid: "sad", birthYear: 1940, isAlive: false),
         Celebrity(id: 11, name: "Ted", imageURL: URL(string: "aol.com")!, factoid: "angry", birthYear: 1946, isAlive: true)]
@@ -29,9 +29,9 @@ class GameController {
     }
     
     func getRandomCelebrity() -> Celebrity {
-        let index = Int.random(in: 0..<celebrities.count)
+        let index = Int.random(in: 0..<testCelebrities.count)
         
-        return celebrities.remove(at: index)
+        return testCelebrities.remove(at: index)
     }
     
     func checkAnswer(_ answer: AnswerType, for celebrity: Celebrity) {
@@ -46,7 +46,7 @@ class GameController {
     }
     
     func updateStatus() {
-        switch totalAnswered == celebrities.count {
+        switch totalAnswered == testCelebrities.count {
         case true: gameStatus = .finished
         case false: return
         }

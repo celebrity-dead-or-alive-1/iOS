@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C056011B23B471BD001CDB3C /* DeadOrAliveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C056011A23B471BD001CDB3C /* DeadOrAliveTests.swift */; };
+		C056012323B5265F001CDB3C /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C056012223B5265F001CDB3C /* NetworkController.swift */; };
 		C06DD82B23B3E53000A015EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06DD82A23B3E53000A015EE /* AppDelegate.swift */; };
 		C06DD82D23B3E53000A015EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06DD82C23B3E53000A015EE /* SceneDelegate.swift */; };
 		C06DD82F23B3E53000A015EE /* ChooseQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06DD82E23B3E53000A015EE /* ChooseQuizViewController.swift */; };
@@ -33,6 +34,7 @@
 		C056011823B471BD001CDB3C /* DeadOrAliveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeadOrAliveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C056011A23B471BD001CDB3C /* DeadOrAliveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadOrAliveTests.swift; sourceTree = "<group>"; };
 		C056011C23B471BD001CDB3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C056012223B5265F001CDB3C /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		C06DD82723B3E53000A015EE /* DeadOrAlive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeadOrAlive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C06DD82A23B3E53000A015EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C06DD82C23B3E53000A015EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,14 @@
 			path = DeadOrAliveTests;
 			sourceTree = "<group>";
 		};
+		C056012423B52665001CDB3C /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				C056012223B5265F001CDB3C /* NetworkController.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		C06DD81E23B3E53000A015EE = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +108,7 @@
 				C06DD82C23B3E53000A015EE /* SceneDelegate.swift */,
 				C06DD83E23B42B4E00A015EE /* View Controllers */,
 				C06DD84323B4436F00A015EE /* Model Controllers */,
+				C056012423B52665001CDB3C /* Networking */,
 				C06DD84423B4437B00A015EE /* Helpers */,
 				C06DD83023B3E53000A015EE /* Main.storyboard */,
 				C06DD83323B3E53100A015EE /* Assets.xcassets */,
@@ -246,6 +257,7 @@
 				C06DD84623B443E000A015EE /* QuestionViewController.swift in Sources */,
 				C06DD84023B42B6E00A015EE /* PropertyKeys.swift in Sources */,
 				C06DD84223B4436600A015EE /* GameController.swift in Sources */,
+				C056012323B5265F001CDB3C /* NetworkController.swift in Sources */,
 				C06DD82D23B3E53000A015EE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
