@@ -34,7 +34,23 @@ class GameController {
         return celebrities.remove(at: index)
     }
     
+    func checkAnswer(_ answer: AnswerType, for celebrity: Celebrity) {
+        let answerBool = answer == .alive ? true : false
+        switch celebrity.isAlive == answerBool  {
+        case true:
+            numberRight += 1
+        case false:
+            numberWrong += 1
+        }
+        updateStatus()
+    }
     
+    func updateStatus() {
+        switch totalAnswered == celebrities.count {
+        case true: gameStatus = .finished
+        case false: return
+        }
+    }
     
     
 }
