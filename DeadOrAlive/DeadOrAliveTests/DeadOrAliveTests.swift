@@ -21,7 +21,93 @@ class DeadOrAliveTests: XCTestCase {
         XCTAssertEqual(gameController.celebrities.count, 2)
     }
     
+    func testCorrectTrueAnswer() {
+        let gameController = GameController()
+        let celebrity = gameController.celebrities[0]
+        
+        XCTAssertEqual(gameController.numberRight, 0)
+        XCTAssertEqual(gameController.numberWrong, 0)
+        XCTAssertEqual(gameController.totalAnswered, 0)
+        
+        gameController.checkAnswer(.alive, for: celebrity)
+        
+        XCTAssertEqual(gameController.numberRight, 1)
+        XCTAssertEqual(gameController.numberWrong, 0)
+        XCTAssertEqual(gameController.totalAnswered, 1)
+    }
     
+    func testCorrectFalseAnswer() {
+        let gameController = GameController()
+        let celebrity = gameController.celebrities[1]
+        
+        XCTAssertEqual(gameController.numberRight, 0)
+        XCTAssertEqual(gameController.numberWrong, 0)
+        XCTAssertEqual(gameController.totalAnswered, 0)
+        
+        gameController.checkAnswer(.dead, for: celebrity)
+        
+        XCTAssertEqual(gameController.numberRight, 1)
+        XCTAssertEqual(gameController.numberWrong, 0)
+        XCTAssertEqual(gameController.totalAnswered, 1)
+    }
+    
+    func testWrongTrueAnswer() {
+        let gameController = GameController()
+        let celebrity = gameController.celebrities[1]
+        
+        XCTAssertEqual(gameController.numberRight, 0)
+        XCTAssertEqual(gameController.numberWrong, 0)
+        XCTAssertEqual(gameController.totalAnswered, 0)
+        
+        gameController.checkAnswer(.alive, for: celebrity)
+        
+        XCTAssertEqual(gameController.numberRight, 0)
+        XCTAssertEqual(gameController.numberWrong, 1)
+        XCTAssertEqual(gameController.totalAnswered, 1)
+    }
+    
+    func testWrongFalseAnswer() {
+        let gameController = GameController()
+        let celebrity = gameController.celebrities[0]
+        
+        XCTAssertEqual(gameController.numberRight, 0)
+        XCTAssertEqual(gameController.numberWrong, 0)
+        XCTAssertEqual(gameController.totalAnswered, 0)
+        
+        gameController.checkAnswer(.dead, for: celebrity)
+        
+        XCTAssertEqual(gameController.numberRight, 0)
+        XCTAssertEqual(gameController.numberWrong, 1)
+        XCTAssertEqual(gameController.totalAnswered, 1)
+    }
+    
+    func testGameStatusRemainsActive() {
+        let gameController = GameController()
+        let celebrity0 = gameController.celebrities[0]
+        let celebrity1 = gameController.celebrities[1]
+        
+        XCTAssertEqual(gameController.gameStatus, .active)
+        
+        gameController.checkAnswer(.alive, for: celebrity0)
+        gameController.checkAnswer(.alive, for: celebrity1)
+        
+        XCTAssertEqual(gameController.gameStatus, .active)
+    }
+    
+    func testGameStatusChangesToFinished() {
+        let gameController = GameController()
+        let celebrity0 = gameController.celebrities[0]
+        let celebrity1 = gameController.celebrities[1]
+        let celebrity2 = gameController.celebrities[2]
+        
+        XCTAssertEqual(gameController.gameStatus, .active)
+        
+        gameController.checkAnswer(.alive, for: celebrity0)
+        gameController.checkAnswer(.alive, for: celebrity1)
+        gameController.checkAnswer(.alive, for: celebrity2)
+        
+        XCTAssertEqual(gameController.gameStatus, .finished)
+    }
 
 //    func testPerformanceExample() {
 //        // This is an example of a performance test case.
