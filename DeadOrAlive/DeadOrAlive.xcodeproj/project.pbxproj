@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C056011B23B471BD001CDB3C /* DeadOrAliveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C056011A23B471BD001CDB3C /* DeadOrAliveTests.swift */; };
 		C056012323B5265F001CDB3C /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C056012223B5265F001CDB3C /* NetworkController.swift */; };
+		C056012623B549C6001CDB3C /* CelebrityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C056012523B549C6001CDB3C /* CelebrityController.swift */; };
 		C06DD82B23B3E53000A015EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06DD82A23B3E53000A015EE /* AppDelegate.swift */; };
 		C06DD82D23B3E53000A015EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06DD82C23B3E53000A015EE /* SceneDelegate.swift */; };
 		C06DD82F23B3E53000A015EE /* ChooseQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06DD82E23B3E53000A015EE /* ChooseQuizViewController.swift */; };
@@ -35,6 +36,7 @@
 		C056011A23B471BD001CDB3C /* DeadOrAliveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadOrAliveTests.swift; sourceTree = "<group>"; };
 		C056011C23B471BD001CDB3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C056012223B5265F001CDB3C /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		C056012523B549C6001CDB3C /* CelebrityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrityController.swift; sourceTree = "<group>"; };
 		C06DD82723B3E53000A015EE /* DeadOrAlive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeadOrAlive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C06DD82A23B3E53000A015EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C06DD82C23B3E53000A015EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				C06DD84123B4436600A015EE /* GameController.swift */,
+				C056012523B549C6001CDB3C /* CelebrityController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				C06DD82F23B3E53000A015EE /* ChooseQuizViewController.swift in Sources */,
 				C06DD82B23B3E53000A015EE /* AppDelegate.swift in Sources */,
 				C06DD84623B443E000A015EE /* QuestionViewController.swift in Sources */,
+				C056012623B549C6001CDB3C /* CelebrityController.swift in Sources */,
 				C06DD84023B42B6E00A015EE /* PropertyKeys.swift in Sources */,
 				C06DD84223B4436600A015EE /* GameController.swift in Sources */,
 				C056012323B5265F001CDB3C /* NetworkController.swift in Sources */,

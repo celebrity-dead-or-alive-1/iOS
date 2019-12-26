@@ -14,6 +14,10 @@ class NetworkController {
         
     }
     
+    func storeImageDataLocally() {
+        
+    }
+    
     func fetchLocalImage() {
         
     }
