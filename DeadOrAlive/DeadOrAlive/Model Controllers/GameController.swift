@@ -20,9 +20,9 @@ class GameController {
     }
     /// This is the list of celebrities that will be tested during this game, not the full list.
     var testCelebrities: [Celebrity] = [
-        Celebrity(id: 01, name: "Jed", imageURL: URL(string: "google.com")!, factoid: "happy", birthYear: 1942, isAlive: true),
-        Celebrity(id: 02, name: "Ned", imageURL: URL(string: "github.com")!, factoid: "sad", birthYear: 1940, isAlive: false),
-        Celebrity(id: 11, name: "Ted", imageURL: URL(string: "aol.com")!, factoid: "angry", birthYear: 1946, isAlive: true)]
+        Celebrity(id: 01, name: "Jed", imageURL: URL(string: "google.com")!, factoid: "happy", birthYear: 1942, isAlive: 0),
+        Celebrity(id: 02, name: "Ned", imageURL: URL(string: "github.com")!, factoid: "sad", birthYear: 1940, isAlive: 0),
+        Celebrity(id: 11, name: "Ted", imageURL: URL(string: "aol.com")!, factoid: "angry", birthYear: 1946, isAlive: 0)]
     
     enum GameStatus: Equatable {
         case active, finished
@@ -36,12 +36,12 @@ class GameController {
     
     func checkAnswer(_ answer: AnswerType, for celebrity: Celebrity) {
         let answerBool = answer == .alive ? true : false
-        switch celebrity.isAlive == answerBool  {
-        case true:
-            numberRight += 1
-        case false:
-            numberWrong += 1
-        }
+//        switch celebrity.isAlive == answerBool  {
+//        case true:
+//            numberRight += 1
+//        case false:
+//            numberWrong += 1
+//        }
         updateStatus()
     }
     
@@ -61,21 +61,25 @@ struct Celebrity: Codable, Equatable {
     let imageURL: URL
     let factoid: String
     let birthYear: Int
-    let isAlive: Bool
+    let isAlive: Int
     
-    enum CelebrityCodingKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         
         case id, name = "celebname", imageURL = "image_url", factoid, birthYear = "birthyear", isAlive = "alive"
     }
+    
+//    func decode {
+//
+//    }
 }
 
 struct User: Codable, Equatable {
     let username: String
-    let password: String
-    let email: String
-    let id: String
-    let token: String
-    let isAdmin: Bool
+    var password: String?
+    var email: String?
+    var id: Int?
+    var token: String?
+    var isAdmin: Bool?
     
     enum UserCodingKeys: String, CodingKey {
         case username, password, email, id, token, isAdmin = "admin"

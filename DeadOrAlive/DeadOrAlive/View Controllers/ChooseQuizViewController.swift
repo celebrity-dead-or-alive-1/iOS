@@ -20,7 +20,7 @@ class ChooseQuizViewController: UIViewController {
     
     // MARK: - Properties
     
-    
+    let networkController = NetworkController()
     
     // MARK: - Lifecycle Methods
 
@@ -28,6 +28,23 @@ class ChooseQuizViewController: UIViewController {
         super.viewDidLoad()
         
         updateViews()
+//        networkController.user = User(username: "randomUser2", password: "thePassword", email: "randomUser2@gmail.com", id: 5, token: nil, isAdmin: false)
+//        guard let user = networkController.user else { return }
+//        networkController.loginUser(user) { error in
+//            if let error = error {
+//                print(error)
+//            }
+//            self.networkController.fetchAllCelebrities()
+//        }
+        
+        networkController.fetchAllCelebrities()
+        
+        
+//        networkController.registerUser(with: "randomUser2", password: "thePassword", email: "randomUser2@gmail.com") { error in
+//            if let error = error {
+//                print(error)
+//            }
+//        }
     }
 
     // MARK: - Actions
@@ -40,6 +57,16 @@ class ChooseQuizViewController: UIViewController {
         for button in styledButtons {
             button?.layer.cornerRadius = 4
             button?.layer.cornerCurve = .continuous
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case PropertyKeys.loginSegue, PropertyKeys.signUpSegue:
+            let loginVC = segue.destination //as? LOGINVIEWCONTROLLER
+        default:
+            // Test segue setup here
+            break
         }
     }
 }

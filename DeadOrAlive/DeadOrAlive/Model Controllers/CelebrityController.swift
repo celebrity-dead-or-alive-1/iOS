@@ -9,9 +9,9 @@
 import Foundation
 
 class CelebrityController {
-    var allCelebrities: [Celebrity] = []
+    var allCelebrities: [Celebrity] = [] // This will need to be changed to a fetchedResultsController.
     
-    func getTestCelebrities(quantity: Int) {
+    func getTestCelebrities(quantity: UInt) {
         var count = 0
         var tempCelebrities = allCelebrities
         var gameCelebrities: [Celebrity] = []
@@ -22,5 +22,9 @@ class CelebrityController {
             gameCelebrities.append(tempCelebrities.remove(at: index))
             count += 1
         } while count != quantity
+    }
+    
+    func addCelebrity(_ celebrity: Celebrity) {
+        allCelebrities.append(celebrity)
     }
 }
