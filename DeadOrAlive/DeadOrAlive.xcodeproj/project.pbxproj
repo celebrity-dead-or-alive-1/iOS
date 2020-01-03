@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C036EB1223BFC3AF0037E1FF /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C036EB1123BFC3AF0037E1FF /* ResultsViewController.swift */; };
 		C056011B23B471BD001CDB3C /* DeadOrAliveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C056011A23B471BD001CDB3C /* DeadOrAliveTests.swift */; };
 		C056012323B5265F001CDB3C /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C056012223B5265F001CDB3C /* NetworkController.swift */; };
 		C056012623B549C6001CDB3C /* CelebrityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C056012523B549C6001CDB3C /* CelebrityController.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C036EB1123BFC3AF0037E1FF /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		C056011823B471BD001CDB3C /* DeadOrAliveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeadOrAliveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C056011A23B471BD001CDB3C /* DeadOrAliveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadOrAliveTests.swift; sourceTree = "<group>"; };
 		C056011C23B471BD001CDB3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				C06DD82E23B3E53000A015EE /* ChooseQuizViewController.swift */,
 				C06DD84523B443E000A015EE /* QuestionViewController.swift */,
+				C036EB1123BFC3AF0037E1FF /* ResultsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C036EB1223BFC3AF0037E1FF /* ResultsViewController.swift in Sources */,
 				C056012A23B56437001CDB3C /* URL+Secure.swift in Sources */,
 				C06DD82F23B3E53000A015EE /* ChooseQuizViewController.swift in Sources */,
 				C06DD82B23B3E53000A015EE /* AppDelegate.swift in Sources */,

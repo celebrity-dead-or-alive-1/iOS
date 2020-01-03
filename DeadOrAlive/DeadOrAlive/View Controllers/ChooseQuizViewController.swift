@@ -21,6 +21,7 @@ class ChooseQuizViewController: UIViewController {
     // MARK: - Properties
     
     let networkController = NetworkController()
+//    let gameController = GameController()
     
     // MARK: - Lifecycle Methods
 
@@ -49,6 +50,10 @@ class ChooseQuizViewController: UIViewController {
 
     // MARK: - Actions
     
+    @IBAction func unwindToLevelViewController() {
+        
+    }
+    
     // MARK: - Private
     
     private func updateViews() {
@@ -64,10 +69,26 @@ class ChooseQuizViewController: UIViewController {
         switch segue.identifier {
         case PropertyKeys.loginSegue, PropertyKeys.signUpSegue:
             let loginVC = segue.destination //as? LOGINVIEWCONTROLLER
+        case PropertyKeys.easySegue, PropertyKeys.mediumSegue, PropertyKeys.hardSegue, PropertyKeys.customSegue:
+            guard let questionVC = segue.destination as? QuestionViewController else { return }
+//            questionVC.gameController = gameController
         default:
             // Test segue setup here
             break
         }
     }
+    
+//    private func levelFor(segue: UIStoryboardSegue) -> String {
+//        switch segue.identifier {
+//        case PropertyKeys.easySegue:
+//            return GameLevel.easy.rawValue
+//        case PropertyKeys.mediumSegue:
+//            return GameLevel.medium.rawValue
+//        case PropertyKeys.hardSegue:
+//            return GameLevel.hard.rawValue
+//        default:
+//            return "None" // Custom!!!
+//        }
+//    }
 }
 

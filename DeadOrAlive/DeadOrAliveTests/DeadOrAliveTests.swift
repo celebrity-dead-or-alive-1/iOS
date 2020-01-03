@@ -29,7 +29,7 @@ class DeadOrAliveTests: XCTestCase {
         XCTAssertEqual(gameController.numberWrong, 0)
         XCTAssertEqual(gameController.totalAnswered, 0)
         
-        gameController.checkAnswer(.alive, for: celebrity)
+        let _ = gameController.checkAnswer(.dead, for: celebrity)
         
         XCTAssertEqual(gameController.numberRight, 1)
         XCTAssertEqual(gameController.numberWrong, 0)
@@ -44,7 +44,7 @@ class DeadOrAliveTests: XCTestCase {
         XCTAssertEqual(gameController.numberWrong, 0)
         XCTAssertEqual(gameController.totalAnswered, 0)
         
-        gameController.checkAnswer(.dead, for: celebrity)
+        let _ = gameController.checkAnswer(.alive, for: celebrity)
         
         XCTAssertEqual(gameController.numberRight, 1)
         XCTAssertEqual(gameController.numberWrong, 0)
@@ -59,7 +59,7 @@ class DeadOrAliveTests: XCTestCase {
         XCTAssertEqual(gameController.numberWrong, 0)
         XCTAssertEqual(gameController.totalAnswered, 0)
         
-        gameController.checkAnswer(.alive, for: celebrity)
+        let _ = gameController.checkAnswer(.dead, for: celebrity)
         
         XCTAssertEqual(gameController.numberRight, 0)
         XCTAssertEqual(gameController.numberWrong, 1)
@@ -74,7 +74,7 @@ class DeadOrAliveTests: XCTestCase {
         XCTAssertEqual(gameController.numberWrong, 0)
         XCTAssertEqual(gameController.totalAnswered, 0)
         
-        gameController.checkAnswer(.dead, for: celebrity)
+        let _ = gameController.checkAnswer(.alive, for: celebrity)
         
         XCTAssertEqual(gameController.numberRight, 0)
         XCTAssertEqual(gameController.numberWrong, 1)
@@ -88,23 +88,23 @@ class DeadOrAliveTests: XCTestCase {
         
         XCTAssertEqual(gameController.gameStatus, .active)
         
-        gameController.checkAnswer(.alive, for: celebrity0)
-        gameController.checkAnswer(.alive, for: celebrity1)
+        let _ = gameController.checkAnswer(.alive, for: celebrity0)
+        let _ = gameController.checkAnswer(.alive, for: celebrity1)
         
         XCTAssertEqual(gameController.gameStatus, .active)
     }
     
     func testGameStatusChangesToFinished() {
         let gameController = GameController()
-        let celebrity0 = gameController.testCelebrities[0]
-        let celebrity1 = gameController.testCelebrities[1]
-        let celebrity2 = gameController.testCelebrities[2]
+        let celebrity0 = gameController.getRandomCelebrity()
+        let celebrity1 = gameController.getRandomCelebrity()
+        let celebrity2 = gameController.getRandomCelebrity()
         
         XCTAssertEqual(gameController.gameStatus, .active)
         
-        gameController.checkAnswer(.alive, for: celebrity0)
-        gameController.checkAnswer(.alive, for: celebrity1)
-        gameController.checkAnswer(.alive, for: celebrity2)
+        let _ = gameController.checkAnswer(.alive, for: celebrity0)
+        let _ = gameController.checkAnswer(.alive, for: celebrity1)
+        let _ = gameController.checkAnswer(.alive, for: celebrity2)
         
         XCTAssertEqual(gameController.gameStatus, .finished)
     }

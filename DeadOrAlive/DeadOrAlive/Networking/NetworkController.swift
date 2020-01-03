@@ -7,13 +7,23 @@
 //
 
 import Foundation
+import UIKit
 
 class NetworkController {
     
     // MARK: - Properties
     
     let baseUrl = URL(string: "https://ogr-ft-celebdoa.herokuapp.com/api")!
+    var localImageURL: URL? {
+        let fileManager = FileManager.default
+        let directory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
+        return directory?.appendingPathComponent(PropertyKeys.imagePathComponent)
+    }
+    var celebrityPhotosData: [Int: Data] = [:]
     var user: User? // This should end up living in CoreData
+    var celebrities: [Celebrity] = [] // This should end up living in CoreData
+    
+    // MARK: - Networking Methods
     
     func registerUser(with username: String, password: String, email: String, completion: @escaping (Error?) -> ()) {
         let loginUrl = baseUrl.appendingPathComponent("auth/register/")
@@ -144,9 +154,13 @@ class NetworkController {
 
             do {
                 let decoded = try JSONDecoder().decode([Celebrity].self, from: data)
+                self.celebrities = decoded
+//                _ = decoded.compactMap({
+//                    self.fetchRemoteImageData(for: $0)
+//                    print($0.name) })
                 
-                _ = decoded.compactMap({ print($0.name) })
-//                completion()
+                
+
                 return
             } catch {
                 print("Error decoding [Celebrity] object: \(error)")
@@ -154,22 +168,42 @@ class NetworkController {
                 return
             }
         }.resume()
+        _ = self.celebrities.compactMap {
+            self.fetchRemoteImageData(for: $0)
+            print($0.name)
+        }
         return
     }
     
     func addCelebrity() {
+
+    } // May not add this
+    
+    func fetchRemoteImageData(for celebrity: Celebrity) {
+        let imageURL = celebrity.imageURL
         
+        var request = URLRequest(url: imageURL)
+        request.httpMethod = HTTPMethod.get
+        
+        URLSession.shared.dataTask(with: request) { data, _, error in
+            
+            if let error = error {
+                print("Error fetching \(celebrity.name)'s image: \(error)")
+            }
+            guard let data = data,
+                let localImageURL = self.localImageURL else { return }
+            self.celebrityPhotosData[celebrity.id] = data
+            
+            do {
+                let encoded = try PropertyListEncoder().encode(self.celebrityPhotosData)
+                try encoded.write(to: localImageURL)
+            } catch {
+                print("Error saving image data: \(error)")
+            }
+        }
     }
     
-    func fetchRemoteImage() {
-        
-    }
-    
-    func storeImageDataLocally() {
-        
-    }
-    
-    func fetchLocalImage() {
-        
+    func fetchLocalImageData(for celebrity: Celebrity) -> UIImage {
+        return UIImage() // TODO: get the data from the URL, then return the image here
     }
 }

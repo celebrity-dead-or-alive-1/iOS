@@ -16,8 +16,15 @@ struct PropertyKeys {
     static let highScoreSegue = "ShowHighScoreSegue"
     static let loginSegue = "ShowLoginSegue"
     static let signUpSegue = "ShowSignUpSegue"
+    static let restultsSegue = "ShowResultsSegue"
+    
+    static let imagePathComponent = "celebrityImage.plist"
 }
 
 enum AnswerType {
     case alive, dead
+}
+
+enum GameLevel: String {
+    case easy = "Easy", medium = "Medium" , hard = "Hard" //, custom = "Custom"
 }
