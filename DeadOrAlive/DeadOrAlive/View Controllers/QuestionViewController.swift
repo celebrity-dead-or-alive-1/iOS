@@ -13,6 +13,7 @@ class QuestionViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var levelLabel: UILabel!
+    @IBOutlet weak var timeWordLabel: UILabel!
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
@@ -40,10 +41,25 @@ class QuestionViewController: UIViewController {
         updateViews()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-       print("hi") super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
         
+        super.viewWillAppear(animated)
+        
+        shouldDismiss()
+    }
+    
+    func shouldDismiss() {
         if gameController.testCelebrities == [] {
+            
+            timeWordLabel.isHidden = true
+            levelLabel.isHidden = true
+            numberLabel.isHidden = true
+            timeLabel.isHidden = true
+            imageView.isHidden = true
+            nameLabel.isHidden = true
+            deadButton.isHidden = true
+            aliveButton.isHidden = true
+            
             dismiss(animated: true, completion: nil)
         }
     }
@@ -51,13 +67,15 @@ class QuestionViewController: UIViewController {
     func updateViews() {
         guard let celebrity = celebrity/*,
             let level = gameController?.gameLevel.rawValue,
-            let answeredQuestions = gameController?.totalAnswered*/,
-        let imagedata = gameController.celebrityPhotosData[celebrity.id] else { return }
+            let answeredQuestions = gameController?.totalAnswered*/else { return }
         
+        if let imagedata = gameController.celebrityPhotosData[celebrity.id] {
+            imageView.image = UIImage(data: imagedata)
+        }
         levelLabel.text = gameController.gameLevel.rawValue// level
         numberLabel.text = "\(gameController.totalAnswered/*answeredQuestions*/ + 1)/\(totalQuestions ?? 0)"
         timeLabel.text = "N/A"
-        imageView.image = UIImage(data: imagedata)// implement fetchImage()
+        
         nameLabel.text = celebrity.name
     }
     
@@ -76,7 +94,7 @@ class QuestionViewController: UIViewController {
     // MARK: - Private
     
     private func setTotalQuestions() {
-        totalQuestions = gameController.testCelebrities.count// ?? 0
+        totalQuestions = gameController.testCelebrities.count
     }
     
     private func displayResult(for correct: Bool) {
@@ -97,14 +115,15 @@ class QuestionViewController: UIViewController {
         }
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
+        guard let resultVC = segue.destination as? ResultsViewController else { return }
+        resultVC.gameController = gameController
     }
-    */
+    
 
 }

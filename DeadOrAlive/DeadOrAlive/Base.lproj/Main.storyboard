@@ -308,7 +308,8 @@
                         <outlet property="nameLabel" destination="VfP-Wl-76X" id="fKL-00-fI1"/>
                         <outlet property="numberLabel" destination="aBf-Lr-FlG" id="rB5-tg-fPy"/>
                         <outlet property="timeLabel" destination="9eX-t2-Z0m" id="dgK-PC-GbI"/>
-                        <segue destination="iGa-np-iwA" kind="show" identifier="ShowResultsSegue" id="5BI-4O-jqs"/>
+                        <outlet property="timeWordLabel" destination="L3k-fK-mPu" id="sEU-up-Hfb"/>
+                        <segue destination="iGa-np-iwA" kind="presentation" identifier="ShowResultsSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="5BI-4O-jqs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NCf-nT-MgC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -320,12 +321,11 @@
             <objects>
                 <viewController id="iGa-np-iwA" customClass="ResultsViewController" customModule="DeadOrAlive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tza-Gg-bty">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PrM-qm-nhF">
-                                <rect key="frame" x="166" y="224" width="56" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PrM-qm-nhF">
+                                <rect key="frame" x="8" y="52" width="359" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -341,9 +341,17 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="PrM-qm-nhF" firstAttribute="top" secondItem="E4q-n3-D84" secondAttribute="top" constant="8" id="HmC-tr-eyI"/>
+                            <constraint firstItem="PrM-qm-nhF" firstAttribute="leading" secondItem="E4q-n3-D84" secondAttribute="leading" constant="8" id="P6v-Ii-IqL"/>
+                            <constraint firstItem="E4q-n3-D84" firstAttribute="trailing" secondItem="PrM-qm-nhF" secondAttribute="trailing" constant="8" id="zjq-yq-uib"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="E4q-n3-D84"/>
                     </view>
                     <navigationItem key="navigationItem" id="ZfD-vn-842"/>
+                    <connections>
+                        <outlet property="resultLabel" destination="PrM-qm-nhF" id="S8d-jk-YZo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9WU-gQ-9gF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="51F-Hh-fdG" userLabel="Exit" sceneMemberID="exit"/>

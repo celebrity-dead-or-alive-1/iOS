@@ -9,11 +9,20 @@
 import UIKit
 
 class ResultsViewController: UIViewController {
+    
+    // MARK: - Outlets
+    @IBOutlet weak var resultLabel: UILabel!
+    
+    // MARK: - Properties
+    
+    var gameController: GameController?
+    
+    // MARK: - Lifecycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     
     // MARK: - Actions
@@ -22,7 +31,11 @@ class ResultsViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
+    func updateViews() {
+        guard let correct = gameController?.numberRight,
+            let total = gameController?.totalAnswered else { return }
+        resultLabel.text = "\(correct) correct out of \(total)"
+    }
 
     /*
     // MARK: - Navigation
