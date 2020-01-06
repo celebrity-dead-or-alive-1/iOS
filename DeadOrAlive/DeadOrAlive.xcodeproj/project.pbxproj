@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		C036EB1223BFC3AF0037E1FF /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C036EB1123BFC3AF0037E1FF /* ResultsViewController.swift */; };
 		C048DA8723C3E6FB00D97FCB /* DeadOrAlive.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C048DA8523C3E6FB00D97FCB /* DeadOrAlive.xcdatamodeld */; };
+		C048DA8923C3EB4000D97FCB /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C048DA8823C3EB4000D97FCB /* CoreDataStack.swift */; };
+		C048DA8B23C3EBF000D97FCB /* User+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C048DA8A23C3EBF000D97FCB /* User+Convenience.swift */; };
+		C048DA8D23C3EC0500D97FCB /* Score+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C048DA8C23C3EC0500D97FCB /* Score+Convenience.swift */; };
+		C048DA8F23C3EC1A00D97FCB /* Celebrity+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C048DA8E23C3EC1A00D97FCB /* Celebrity+Convenience.swift */; };
+		C048DA9123C3EC3000D97FCB /* UserRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C048DA9023C3EC3000D97FCB /* UserRepresentation.swift */; };
+		C048DA9323C3EC3C00D97FCB /* ScoreRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C048DA9223C3EC3C00D97FCB /* ScoreRepresentation.swift */; };
+		C048DA9523C3EC4E00D97FCB /* CelebrityRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C048DA9423C3EC4E00D97FCB /* CelebrityRepresentation.swift */; };
 		C056011B23B471BD001CDB3C /* DeadOrAliveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C056011A23B471BD001CDB3C /* DeadOrAliveTests.swift */; };
 		C056012323B5265F001CDB3C /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C056012223B5265F001CDB3C /* NetworkController.swift */; };
 		C056012623B549C6001CDB3C /* CelebrityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C056012523B549C6001CDB3C /* CelebrityController.swift */; };
@@ -47,6 +54,13 @@
 /* Begin PBXFileReference section */
 		C036EB1123BFC3AF0037E1FF /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		C048DA8623C3E6FB00D97FCB /* DeadOrAlive.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DeadOrAlive.xcdatamodel; sourceTree = "<group>"; };
+		C048DA8823C3EB4000D97FCB /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		C048DA8A23C3EBF000D97FCB /* User+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Convenience.swift"; sourceTree = "<group>"; };
+		C048DA8C23C3EC0500D97FCB /* Score+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Score+Convenience.swift"; sourceTree = "<group>"; };
+		C048DA8E23C3EC1A00D97FCB /* Celebrity+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Celebrity+Convenience.swift"; sourceTree = "<group>"; };
+		C048DA9023C3EC3000D97FCB /* UserRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepresentation.swift; sourceTree = "<group>"; };
+		C048DA9223C3EC3C00D97FCB /* ScoreRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreRepresentation.swift; sourceTree = "<group>"; };
+		C048DA9423C3EC4E00D97FCB /* CelebrityRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrityRepresentation.swift; sourceTree = "<group>"; };
 		C056011823B471BD001CDB3C /* DeadOrAliveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeadOrAliveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C056011A23B471BD001CDB3C /* DeadOrAliveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadOrAliveTests.swift; sourceTree = "<group>"; };
 		C056011C23B471BD001CDB3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -98,6 +112,13 @@
 			isa = PBXGroup;
 			children = (
 				C048DA8523C3E6FB00D97FCB /* DeadOrAlive.xcdatamodeld */,
+				C048DA8823C3EB4000D97FCB /* CoreDataStack.swift */,
+				C048DA8A23C3EBF000D97FCB /* User+Convenience.swift */,
+				C048DA9023C3EC3000D97FCB /* UserRepresentation.swift */,
+				C048DA8C23C3EC0500D97FCB /* Score+Convenience.swift */,
+				C048DA9223C3EC3C00D97FCB /* ScoreRepresentation.swift */,
+				C048DA8E23C3EC1A00D97FCB /* Celebrity+Convenience.swift */,
+				C048DA9423C3EC4E00D97FCB /* CelebrityRepresentation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -317,20 +338,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C048DA8923C3EB4000D97FCB /* CoreDataStack.swift in Sources */,
 				C0D9625D23C040A900DED697 /* LoginViewController.swift in Sources */,
 				C036EB1223BFC3AF0037E1FF /* ResultsViewController.swift in Sources */,
 				C056012A23B56437001CDB3C /* URL+Secure.swift in Sources */,
+				C048DA9123C3EC3000D97FCB /* UserRepresentation.swift in Sources */,
 				C06DD82F23B3E53000A015EE /* ChooseQuizViewController.swift in Sources */,
 				C06DD82B23B3E53000A015EE /* AppDelegate.swift in Sources */,
+				C048DA9323C3EC3C00D97FCB /* ScoreRepresentation.swift in Sources */,
 				C06DD84623B443E000A015EE /* QuestionViewController.swift in Sources */,
 				C056012623B549C6001CDB3C /* CelebrityController.swift in Sources */,
+				C048DA8B23C3EBF000D97FCB /* User+Convenience.swift in Sources */,
 				C06DD84023B42B6E00A015EE /* PropertyKeys.swift in Sources */,
 				C056012823B563C3001CDB3C /* HTTPMethod.swift in Sources */,
 				C06DD84223B4436600A015EE /* GameController.swift in Sources */,
 				C048DA8723C3E6FB00D97FCB /* DeadOrAlive.xcdatamodeld in Sources */,
+				C048DA9523C3EC4E00D97FCB /* CelebrityRepresentation.swift in Sources */,
+				C048DA8D23C3EC0500D97FCB /* Score+Convenience.swift in Sources */,
 				C056012323B5265F001CDB3C /* NetworkController.swift in Sources */,
 				C0F94C8123C1509B00740F88 /* SignUpViewController.swift in Sources */,
 				C06DD82D23B3E53000A015EE /* SceneDelegate.swift in Sources */,
+				C048DA8F23C3EC1A00D97FCB /* Celebrity+Convenience.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
