@@ -8,13 +8,14 @@
 
 import Foundation
 import UIKit
+//import ImageIO
 
 class NetworkController {
     
     // MARK: - Properties
     
     let baseUrl = URL(string: "https://ogr-ft-celebdoa.herokuapp.com/api")!
-    var localImageURL: URL? {
+    var localImageFolder: URL? {
         let fileManager = FileManager.default
         let directory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
         return directory?.appendingPathComponent(PropertyKeys.imagePathComponent)
@@ -155,9 +156,9 @@ class NetworkController {
             do {
                 let decoded = try JSONDecoder().decode([Celebrity].self, from: data)
                 self.celebrities = decoded
-//                _ = decoded.compactMap({
-//                    self.fetchRemoteImageData(for: $0)
-//                    print($0.name) })
+                _ = decoded.compactMap({
+                    self.fetchRemoteImageData(for: $0)
+                    print($0.name) })
                 
                 
 
@@ -177,7 +178,7 @@ class NetworkController {
     
     func addCelebrity() {
 
-    } // May not add this
+    } // I may not include this
     
     func fetchRemoteImageData(for celebrity: Celebrity) {
         let imageURL = celebrity.imageURL
@@ -190,20 +191,39 @@ class NetworkController {
             if let error = error {
                 print("Error fetching \(celebrity.name)'s image: \(error)")
             }
-            guard let data = data,
-                let localImageURL = self.localImageURL else { return }
-            self.celebrityPhotosData[celebrity.id] = data
+            guard let safeData = data,
+                let imageFolderString = self.localImageFolder?.absoluteString else { return }
             
-            do {
-                let encoded = try PropertyListEncoder().encode(self.celebrityPhotosData)
-                try encoded.write(to: localImageURL)
-            } catch {
-                print("Error saving image data: \(error)")
-            }
-        }
+            let nsData = safeData as NSData // ,
+                
+            // Figure out file type (jpg, png, etc)
+            // move absoluteString to guard let
+            
+            
+            let successfulWrite = nsData.write(toFile: "\(imageFolderString)/\(celebrity.id).jpg", atomically: true) // returns a boolean for success, if it fails, Log the failure
+            
+//            Add property to Celebrity for holding the completed url: \(self.localImageFolder?.absoluteString)/\(celebrity.id).jpg
+                
+//                let localImageURL = self.localImageURL else { return }
+//            self.celebrityPhotosData[celebrity.id] = data
+            
+            
+            
+            
+            // Don't need below if nsData.write() works
+            
+//            do {
+//                let encoded = try PropertyListEncoder().encode(self.celebrityPhotosData)
+//                try encoded.write(to: localImageURL)
+//            } catch {
+//                print("Error saving image data: \(error)")
+//            }
+        }.resume()
     }
     
     func fetchLocalImageData(for celebrity: Celebrity) -> UIImage {
+        
+        
         return UIImage() // TODO: get the data from the URL, then return the image here
     }
 }

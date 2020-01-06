@@ -17,11 +17,14 @@ class ChooseQuizViewController: UIViewController {
     @IBOutlet weak var hardButton: UIButton!
     @IBOutlet weak var customButton: UIButton!
     @IBOutlet weak var highScoresButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
     
     // MARK: - Properties
     
     let networkController = NetworkController()
 //    let gameController = GameController()
+    var user: User?
     
     // MARK: - Lifecycle Methods
 
@@ -47,12 +50,17 @@ class ChooseQuizViewController: UIViewController {
 //            }
 //        }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super .viewWillAppear(animated)
+        updateViews()
+    }
 
     // MARK: - Actions
     
-    @IBAction func unwindToLevelViewController() {
-        
-    }
+//    @IBAction func unwindToLevelViewController() {
+//
+//    }
     
     // MARK: - Private
     
@@ -63,18 +71,25 @@ class ChooseQuizViewController: UIViewController {
             button?.layer.cornerRadius = 4
             button?.layer.cornerCurve = .continuous
         }
+        if let user = user {
+            loginButton.setTitle("\(user.username)", for: .normal)
+            signUpButton.isHidden = true
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-        case PropertyKeys.loginSegue, PropertyKeys.signUpSegue:
-            let loginVC = segue.destination //as? LOGINVIEWCONTROLLER
+        case PropertyKeys.loginSegue:
+            guard let loginVC = segue.destination as? LoginViewController else { return }
         case PropertyKeys.easySegue, PropertyKeys.mediumSegue, PropertyKeys.hardSegue, PropertyKeys.customSegue:
             guard let questionVC = segue.destination as? QuestionViewController else { return }
-//            questionVC.gameController = gameController
-        default:
-            // Test segue setup here
+            questionVC.networkController = networkController
+        case PropertyKeys.signUpSegue:
+            guard let signUpVC = segue.destination as? SignUpViewController else { return }
+            signUpVC.networkController = networkController
+        case PropertyKeys.highScoreSegue:
             break
+        default: return
         }
     }
     

@@ -20,15 +20,14 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var deadButton: UIButton!
     @IBOutlet weak var aliveButton: UIButton!
-    
+    @IBOutlet weak var correctFilterView: UIView!
+    @IBOutlet weak var continueButton: UIButton!
     
     // MARK: - Properties
     
     let gameController = GameController()
-//    var gameController: GameController?
-    var celebrity: Celebrity?// {
-//        return gameController?.getRandomCelebrity()
-//    }
+    var networkController: NetworkController?
+    var celebrity: Celebrity?
     var totalQuestions: Int?
     
     // MARK: - Lifecycle Methods
@@ -65,9 +64,15 @@ class QuestionViewController: UIViewController {
     }
     
     func updateViews() {
+        
+        correctFilterView.isHidden = true
+        continueButton.isHidden = true
+        
         guard let celebrity = celebrity/*,
             let level = gameController?.gameLevel.rawValue,
             let answeredQuestions = gameController?.totalAnswered*/else { return }
+        
+        setImage(for: celebrity)
         
         if let imagedata = gameController.celebrityPhotosData[celebrity.id] {
             imageView.image = UIImage(data: imagedata)
@@ -77,6 +82,13 @@ class QuestionViewController: UIViewController {
         timeLabel.text = "N/A"
         
         nameLabel.text = celebrity.name
+    }
+    
+    func setImage(for celebrity: Celebrity) {
+        if let imageData = gameController.celebrityPhotosData[celebrity.id] {
+            imageView.image = UIImage(data: imageData)
+        }
+        
     }
     
     // MARK: - Actions
@@ -98,23 +110,38 @@ class QuestionViewController: UIViewController {
     }
     
     private func displayResult(for correct: Bool) {
+       
+        deadButton.isEnabled = false
+        aliveButton.isEnabled = false
+        continueButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        continueButton.widthAnchor.constraint(equalToConstant: 100).isActive  = true
+        continueButton.centerXAnchor.constraint(equalTo: correctFilterView.centerXAnchor).isActive = true
+        continueButton.centerYAnchor.constraint(equalTo: imageView.centerYAnchor).isActive = true
+        continueButton.layer.cornerRadius = 4
+        continueButton.isHidden = false
         switch correct {
         case true:
-            // green overlay with "ok" button
+            correctFilterView.layer.backgroundColor = UIColor(displayP3Red: 58.0/255, green: 143.0/255, blue: 18.0/255, alpha: 0.4).cgColor
+            correctFilterView.isHidden = false
             print("Correct!")
         case false:
             // red overlay with "ok" button
+            correctFilterView.layer.backgroundColor = UIColor(displayP3Red: 234.0/255, green: 95.0/255, blue: 95.0/255, alpha: 0.4).cgColor
+            correctFilterView.isHidden = false
             print("Wrong!")
         }
-        
+    }
+
+    @IBAction func continueQuiz(_ sender: Any) {
         if gameController.gameStatus == .active {
             celebrity = gameController.getRandomCelebrity()
+            deadButton.isEnabled = true
+            aliveButton.isEnabled = true
             updateViews()
         } else {
             performSegue(withIdentifier: PropertyKeys.restultsSegue, sender: nil)
         }
     }
-
     
     // MARK: - Navigation
 

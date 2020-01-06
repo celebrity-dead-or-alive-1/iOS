@@ -81,13 +81,14 @@ struct Celebrity: Codable, Equatable {
     let id: Int
     let name: String
     let imageURL: URL
+    let localImageFile: String?
     let factoid: String
     let birthYear: Int
     let isAlive: Int
     
     enum CodingKeys: String, CodingKey {
         
-        case id, name = "celebname", imageURL = "image_url", factoid, birthYear = "birthyear", isAlive = "alive"
+        case id, name = "celebname", imageURL = "image_url", localImageFile, factoid, birthYear = "birthyear", isAlive = "alive"
     }
     
 //    func decode {
@@ -107,6 +108,18 @@ struct User: Codable, Equatable {
         case username, password, email, id, token, isAdmin = "admin"
     }
 }
+
+struct Score: Codable, Equatable {
+    let id: Int
+    let score: Int
+    let userID: Int
+    let time: Int
+    
+    enum ScoreCodingKeys: String, CodingKey {
+        case id, score, userID = "user_id", time
+    }
+}
+
 /*
 """
 {

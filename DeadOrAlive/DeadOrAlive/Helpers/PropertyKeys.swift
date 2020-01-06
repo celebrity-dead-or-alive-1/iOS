@@ -28,3 +28,9 @@ enum AnswerType {
 enum GameLevel: String {
     case easy = "Easy", medium = "Medium" , hard = "Hard" //, custom = "Custom"
 }
+
+/*
+ Users:
+    - username: "randomUser2", password: "thePassword", email: "randomUser2@gmail.com"
+    - username: "iOSUser1", password: "12345678", email: "fanboi@icloud.com"
+ */
