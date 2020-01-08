@@ -12,7 +12,7 @@ struct UserRepresentation: Codable, Equatable {
     let username: String
     var password: String?
     var email: String?
-    var id: Int?
+    var id: Int
     var token: String?
     var isAdmin: Bool?
     

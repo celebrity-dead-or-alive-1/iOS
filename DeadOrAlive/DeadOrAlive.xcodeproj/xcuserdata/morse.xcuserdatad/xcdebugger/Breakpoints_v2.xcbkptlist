@@ -7,64 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "74078281-7815-48B6-96EB-ACC62575FB46"
-            shouldBeEnabled = "No"
+            uuid = "88A03DF7-1367-4150-AFDE-A2A7BE274B31"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DeadOrAlive/Networking/NetworkController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
-            landmarkName = "fetchRemoteImageData(for:)"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "registerUser(with:password:email:completion:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "74078281-7815-48B6-96EB-ACC62575FB46 - ee1521c0caa97c8c"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "DeadOrAlive.NetworkController.fetchRemoteImageData(for: DeadOrAlive.Celebrity) -&gt; ()"
-                  moduleName = "DeadOrAlive"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/morse/dev/iOS11-Sprint12/iOS/DeadOrAlive/DeadOrAlive/Networking/NetworkController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "188"
-                  endingLineNumber = "188"
-                  offsetFromSymbolStart = "473">
-               </Location>
-               <Location
-                  uuid = "74078281-7815-48B6-96EB-ACC62575FB46 - 1016d85f8a83fbc0"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in DeadOrAlive.NetworkController.fetchRemoteImageData(for: DeadOrAlive.Celebrity) -&gt; ()"
-                  moduleName = "DeadOrAlive"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/morse/dev/iOS11-Sprint12/iOS/DeadOrAlive/DeadOrAlive/Networking/NetworkController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "182"
-                  endingLineNumber = "182"
-                  offsetFromSymbolStart = "313">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C792606C-F482-40D1-815C-10E3B9C545C2"
-            shouldBeEnabled = "No"
+            uuid = "70AD7943-04FB-4D13-AF88-595289F526D5"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DeadOrAlive/Networking/NetworkController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
-            landmarkName = "fetchRemoteImageData(for:)"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "loginUser(_:password:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

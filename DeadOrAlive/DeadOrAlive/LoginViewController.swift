@@ -40,10 +40,9 @@ class LoginViewController: UIViewController {
             !username.isEmpty,
             !password.isEmpty else { return }
         
-       let user = User(username: "user", password: nil, email: nil, id: nil, token: nil, isAdmin: false) // This needs to be changed to an actual user, the one from CoreData.
-        networkController?.loginUser(user, completion: { error in
+        networkController?.loginUser(username, password: password, completion: { error in
             if let error = error {
-                print("Error logging in \(user): \(error)")
+                print("Error logging in \(username) with password (\(password)): \(error)")
             } else {
                 DispatchQueue.main.async {
                     self.dismiss(animated: true, completion: nil)

@@ -17,8 +17,11 @@ struct PropertyKeys {
     static let loginSegue = "ShowLoginSegue"
     static let signUpSegue = "ShowSignUpSegue"
     static let restultsSegue = "ShowResultsSegue"
+    static let downloadSegue = "DownloadingSegue"
     
-    static let imagePathComponent = "celebrityImage.plist"
+    static let imagePathComponent = "celebrityImage"
+    
+    static let downloadedKey = "CelebritiesDownloadedKeys"
 }
 
 enum AnswerType {
@@ -33,4 +36,6 @@ enum GameLevel: String {
  Users:
     - username: "randomUser2", password: "thePassword", email: "randomUser2@gmail.com"
     - username: "iOSUser1", password: "12345678", email: "fanboi@icloud.com"
+ 
+ user135, aPassword, user135@gmail.com
  */

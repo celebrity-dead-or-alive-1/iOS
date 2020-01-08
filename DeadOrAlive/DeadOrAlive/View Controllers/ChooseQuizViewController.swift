@@ -30,7 +30,8 @@ class ChooseQuizViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(false, forKey: PropertyKeys.downloadedKey)
         updateViews()
 //        networkController.user = User(username: "randomUser2", password: "thePassword", email: "randomUser2@gmail.com", id: 5, token: nil, isAdmin: false)
 //        guard let user = networkController.user else { return }
@@ -41,7 +42,7 @@ class ChooseQuizViewController: UIViewController {
 //            self.networkController.fetchAllCelebrities()
 //        }
         
-        networkController.fetchAllCelebrities()
+//        networkController.fetchAllCelebrities()
         
         
 //        networkController.registerUser(with: "randomUser2", password: "thePassword", email: "randomUser2@gmail.com") { error in
@@ -53,7 +54,19 @@ class ChooseQuizViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
+        
         updateViews()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
+        let userDefaults = UserDefaults.standard
+        let celebritiesDownloaded = userDefaults.bool(forKey: PropertyKeys.downloadedKey)
+        if !celebritiesDownloaded {
+            performSegue(withIdentifier: PropertyKeys.downloadSegue, sender: self)
+        }
     }
 
     // MARK: - Actions
@@ -72,7 +85,8 @@ class ChooseQuizViewController: UIViewController {
             button?.layer.cornerCurve = .continuous
         }
         if let user = user {
-            loginButton.setTitle("\(user.username)", for: .normal)
+            guard let username = user.username else { return }
+            loginButton.setTitle("\(username)", for: .normal)
             signUpButton.isHidden = true
         }
     }
@@ -81,6 +95,7 @@ class ChooseQuizViewController: UIViewController {
         switch segue.identifier {
         case PropertyKeys.loginSegue:
             guard let loginVC = segue.destination as? LoginViewController else { return }
+            loginVC.networkController = networkController
         case PropertyKeys.easySegue, PropertyKeys.mediumSegue, PropertyKeys.hardSegue, PropertyKeys.customSegue:
             guard let questionVC = segue.destination as? QuestionViewController else { return }
             questionVC.networkController = networkController

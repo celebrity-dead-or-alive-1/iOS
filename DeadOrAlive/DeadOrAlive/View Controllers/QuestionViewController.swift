@@ -34,6 +34,8 @@ class QuestionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         setTotalQuestions()
         celebrity = gameController.getRandomCelebrity()
@@ -58,6 +60,8 @@ class QuestionViewController: UIViewController {
             nameLabel.isHidden = true
             deadButton.isHidden = true
             aliveButton.isHidden = true
+            correctFilterView.isHidden = true
+            continueButton.isHidden = true
             
             dismiss(animated: true, completion: nil)
         }
@@ -74,7 +78,7 @@ class QuestionViewController: UIViewController {
         
         setImage(for: celebrity)
         
-        if let imagedata = gameController.celebrityPhotosData[celebrity.id] {
+        if let imagedata = gameController.celebrityPhotosData[Int(celebrity.id)] {
             imageView.image = UIImage(data: imagedata)
         }
         levelLabel.text = gameController.gameLevel.rawValue// level
@@ -85,8 +89,8 @@ class QuestionViewController: UIViewController {
     }
     
     func setImage(for celebrity: Celebrity) {
-        if let imageData = gameController.celebrityPhotosData[celebrity.id] {
-            imageView.image = UIImage(data: imageData)
+        if let image = networkController?.fetchImage(for: celebrity) {
+            imageView.image = image
         }
         
     }
@@ -123,12 +127,10 @@ class QuestionViewController: UIViewController {
         case true:
             correctFilterView.layer.backgroundColor = UIColor(displayP3Red: 58.0/255, green: 143.0/255, blue: 18.0/255, alpha: 0.4).cgColor
             correctFilterView.isHidden = false
-            print("Correct!")
         case false:
             // red overlay with "ok" button
             correctFilterView.layer.backgroundColor = UIColor(displayP3Red: 234.0/255, green: 95.0/255, blue: 95.0/255, alpha: 0.4).cgColor
             correctFilterView.isHidden = false
-            print("Wrong!")
         }
     }
 

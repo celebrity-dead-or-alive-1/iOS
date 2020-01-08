@@ -283,6 +283,7 @@
                         <outlet property="loginButton" destination="Xfb-kc-z5q" id="MBI-KX-gQk"/>
                         <outlet property="mediumButton" destination="q2J-2h-ocH" id="jhA-Dz-s4E"/>
                         <outlet property="signUpButton" destination="Nqg-hS-xP7" id="ydg-BE-2Kx"/>
+                        <segue destination="VYx-xx-LA4" kind="presentation" identifier="DownloadingSegue" modalPresentationStyle="fullScreen" id="h1Z-1t-Hwh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -704,34 +705,36 @@
                                                 <connections>
                                                     <action selector="returnButtonTapped:" destination="JBm-lh-iRA" eventType="touchUpInside" id="69V-lN-xt1"/>
                                                     <action selector="returnButtonTapped:" destination="oWb-yP-CAN" eventType="touchUpInside" id="yqk-L8-gLa"/>
+                                                    <action selector="startNewGame:" destination="iGa-np-iwA" eventType="touchUpInside" id="KG1-Q4-LuZ"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Congratulations!!!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DlS-v9-phQ">
-                                        <rect key="frame" x="75" y="277" width="184" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="AveriaSansLibre-Light" family="Averia Sans Libre" pointSize="24"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your rank is #14" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZW-NE-0fO">
-                                        <rect key="frame" x="83" y="358" width="168" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="AveriaSansLibre-Light" family="Averia Sans Libre" pointSize="24"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You got a new high score!!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQg-V3-NNg">
-                                        <rect key="frame" x="71" y="315" width="193" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="AveriaSansLibre-Light" family="Averia Sans Libre" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PGa-bz-SGB">
-                                        <rect key="frame" x="8" y="462" width="319" height="72"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="XUS-ub-5K3">
+                                        <rect key="frame" x="20" y="292" width="295" height="109.33333333333331"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations!!!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DlS-v9-phQ">
+                                                <rect key="frame" x="0.0" y="0.0" width="295" height="30"/>
+                                                <fontDescription key="fontDescription" name="AveriaSansLibre-Light" family="Averia Sans Libre" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You got a new high score!!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQg-V3-NNg">
+                                                <rect key="frame" x="0.0" y="44" width="295" height="21.333333333333329"/>
+                                                <fontDescription key="fontDescription" name="AveriaSansLibre-Light" family="Averia Sans Libre" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your rank is #14" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZW-NE-0fO">
+                                                <rect key="frame" x="0.0" y="79.333333333333314" width="295" height="30"/>
+                                                <fontDescription key="fontDescription" name="AveriaSansLibre-Light" family="Averia Sans Libre" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PGa-bz-SGB">
+                                        <rect key="frame" x="20" y="427" width="295" height="119"/>
                                         <string key="text">Sign up for a free account
 and save your high score!!
 
@@ -743,12 +746,19 @@ and save your high score!!
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstItem="XUS-ub-5K3" firstAttribute="top" secondItem="U6N-xZ-xXm" secondAttribute="bottom" constant="60" id="7gu-up-Pk0"/>
                                     <constraint firstItem="2Dm-CC-EB0" firstAttribute="leading" secondItem="dTJ-NZ-On7" secondAttribute="leading" constant="8" id="82f-kx-58y"/>
+                                    <constraint firstAttribute="trailing" secondItem="XUS-ub-5K3" secondAttribute="trailing" constant="20" id="9F2-fy-KQG"/>
                                     <constraint firstAttribute="trailing" secondItem="2Dm-CC-EB0" secondAttribute="trailing" constant="8" id="AAs-Zg-D6G"/>
                                     <constraint firstAttribute="bottom" secondItem="2Dm-CC-EB0" secondAttribute="bottom" constant="16" id="HB2-dm-dKM"/>
+                                    <constraint firstItem="XUS-ub-5K3" firstAttribute="leading" secondItem="dTJ-NZ-On7" secondAttribute="leading" constant="20" id="Sfo-fa-hae"/>
                                     <constraint firstAttribute="trailing" secondItem="U6N-xZ-xXm" secondAttribute="trailing" constant="8" id="Vz0-pv-CD7"/>
                                     <constraint firstItem="U6N-xZ-xXm" firstAttribute="leading" secondItem="dTJ-NZ-On7" secondAttribute="leading" constant="8" id="bgh-FP-vXd"/>
                                     <constraint firstItem="U6N-xZ-xXm" firstAttribute="top" secondItem="dTJ-NZ-On7" secondAttribute="top" constant="12" id="cnr-su-Fc6"/>
+                                    <constraint firstItem="PGa-bz-SGB" firstAttribute="leading" secondItem="dTJ-NZ-On7" secondAttribute="leading" constant="20" id="jdw-8D-pvG"/>
+                                    <constraint firstItem="2Dm-CC-EB0" firstAttribute="top" secondItem="PGa-bz-SGB" secondAttribute="bottom" constant="20" id="u25-BW-PTR"/>
+                                    <constraint firstItem="XUS-ub-5K3" firstAttribute="centerX" secondItem="dTJ-NZ-On7" secondAttribute="centerX" id="w9L-wb-Z5p"/>
+                                    <constraint firstAttribute="trailing" secondItem="PGa-bz-SGB" secondAttribute="trailing" constant="20" id="y69-y9-Mp0"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -762,6 +772,9 @@ and save your high score!!
                         <viewLayoutGuide key="safeArea" id="E4q-n3-D84"/>
                     </view>
                     <navigationItem key="navigationItem" id="ZfD-vn-842"/>
+                    <connections>
+                        <outlet property="resultLabel" destination="Zty-yy-e4p" id="64J-Rk-CrB"/>
+                    </connections>
                 </viewController>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rjk-no-eOp">
                     <rect key="frame" x="0.0" y="0.0" width="319" height="50"/>
@@ -779,6 +792,40 @@ and save your high score!!
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9WU-gQ-9gF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2368.8000000000002" y="136.69950738916256"/>
+        </scene>
+        <!--Downloading View Controller-->
+        <scene sceneID="3u8-Wm-CHd">
+            <objects>
+                <viewController id="VYx-xx-LA4" customClass="DownloadingViewController" customModule="DeadOrAlive" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3zN-kc-lMr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JrO-yr-zdr">
+                                <rect key="frame" x="100" y="394" width="175" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="V2P-6Q-H5P" firstAttribute="trailing" secondItem="JrO-yr-zdr" secondAttribute="trailing" constant="100" id="FkJ-3S-pac"/>
+                            <constraint firstItem="JrO-yr-zdr" firstAttribute="centerX" secondItem="3zN-kc-lMr" secondAttribute="centerX" id="Ggo-rj-DFx"/>
+                            <constraint firstItem="JrO-yr-zdr" firstAttribute="centerY" secondItem="3zN-kc-lMr" secondAttribute="centerY" id="JLL-me-Hxw"/>
+                            <constraint firstItem="JrO-yr-zdr" firstAttribute="top" secondItem="V2P-6Q-H5P" secondAttribute="top" constant="350" id="nPp-hj-kjg"/>
+                            <constraint firstItem="JrO-yr-zdr" firstAttribute="leading" secondItem="V2P-6Q-H5P" secondAttribute="leading" constant="100" id="y41-Gn-5T0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="V2P-6Q-H5P"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ITS-Q4-pB9"/>
+                    <connections>
+                        <outlet property="label" destination="JrO-yr-zdr" id="22j-Es-NmX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="giG-xO-NFC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="853.60000000000002" y="850.49261083743841"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="5Eg-SQ-Vys">
@@ -803,7 +850,7 @@ and save your high score!!
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sL7-Il-Oaz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1606" y="814"/>
+            <point key="canvasLocation" x="1606" y="850"/>
         </scene>
     </scenes>
     <resources>
