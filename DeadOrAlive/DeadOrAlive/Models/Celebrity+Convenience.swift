@@ -17,7 +17,7 @@ extension Celebrity {
             let imageURL = imageURL,
             let factoid = factoid else { return nil }
         
-        return CelebrityRepresentation(id: Int(id), name: name, imageURL: imageURL, localImageFile: localImageFile, factoid: factoid, birthYear: Int(birthYear), isAlive: Int(isAlive))
+        return CelebrityRepresentation(id: Int(id), name: name, imageURL: imageURL, localImageFile: localImageFile, factoid: factoid, birthYear: Int(birthYear), isAlive: isAlive/*Int(isAlive)*/)
     }
     
     @discardableResult convenience init(id: Int,
@@ -26,7 +26,7 @@ extension Celebrity {
                                         localImageFile: String,
                                         factoid: String,
                                         birthYear: Int,
-                                        isAlive: Int,
+                                        isAlive: Bool/*Int*/,
                                         context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         
         self.init(context: context)
@@ -36,7 +36,7 @@ extension Celebrity {
         self.localImageFile = localImageFile
         self.factoid = factoid
         self.birthYear = Int16(birthYear)
-        self.isAlive = Int16(isAlive)
+        self.isAlive = isAlive// Int16(isAlive)
     }
     
     @discardableResult convenience init(celebrityRepresentation: CelebrityRepresentation, context: NSManagedObjectContext) {

@@ -15,7 +15,7 @@ struct CelebrityRepresentation: Codable, Equatable {
     let localImageFile: String?
     let factoid: String
     let birthYear: Int
-    let isAlive: Int
+    let isAlive: Bool
     
     enum CodingKeys: String, CodingKey {
         

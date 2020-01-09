@@ -28,6 +28,7 @@ class QuestionViewController: UIViewController {
     let gameController = GameController()
     var networkController: NetworkController?
     var celebrity: Celebrity?
+    var user: User?
     var totalQuestions: Int?
     
     // MARK: - Lifecycle Methods
@@ -102,9 +103,6 @@ class QuestionViewController: UIViewController {
         let answer: AnswerType = sender == deadButton ? .dead : .alive
         
         displayResult(for: gameController.checkAnswer(answer, for: celebrity))
-//        if let correct = gameController?.checkAnswer(answer, for: celebrity) {
-//            displayResult(for: correct)
-//        }
     }
     
     // MARK: - Private

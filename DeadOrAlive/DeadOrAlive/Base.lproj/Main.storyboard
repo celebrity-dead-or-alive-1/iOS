@@ -233,7 +233,7 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="f7s-qt-q4E" kind="show" identifier="ShowHighScoreSegue" id="crx-FO-Myf"/>
+                                            <segue destination="f7s-qt-q4E" kind="presentation" identifier="ShowHighScoreSegue" id="crx-FO-Myf"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nqg-hS-xP7">
@@ -243,7 +243,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="oWb-yP-CAN" kind="presentation" identifier="ShowSignUpSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="mjV-2M-zP4"/>
+                                            <action selector="signUpButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vn5-TE-zTb"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -279,11 +279,12 @@
                         <outlet property="customButton" destination="vxZ-C3-zXp" id="oUr-rw-GMg"/>
                         <outlet property="easyButton" destination="Ijz-3p-jhr" id="fMX-Pw-ffY"/>
                         <outlet property="hardButton" destination="7gO-yi-oFR" id="AMY-Eg-MhC"/>
-                        <outlet property="highScoresButton" destination="k4M-X2-AoU" id="nSy-oq-tFf"/>
+                        <outlet property="highScoresButton" destination="k4M-X2-AoU" id="lIp-wr-Fo0"/>
                         <outlet property="loginButton" destination="Xfb-kc-z5q" id="MBI-KX-gQk"/>
                         <outlet property="mediumButton" destination="q2J-2h-ocH" id="jhA-Dz-s4E"/>
-                        <outlet property="signUpButton" destination="Nqg-hS-xP7" id="ydg-BE-2Kx"/>
+                        <outlet property="signUpButton" destination="Nqg-hS-xP7" id="K6p-tn-hrH"/>
                         <segue destination="VYx-xx-LA4" kind="presentation" identifier="DownloadingSegue" modalPresentationStyle="fullScreen" id="h1Z-1t-Hwh"/>
+                        <segue destination="oWb-yP-CAN" kind="presentation" identifier="ShowSignUpSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="usw-Gq-1zP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -549,6 +550,7 @@
                     <connections>
                         <outlet property="confirmPasswordTextField" destination="vnm-HG-oQM" id="X7C-fn-BQy"/>
                         <outlet property="emailTextField" destination="rU4-Lu-hx7" id="9aX-vL-gmN"/>
+                        <outlet property="homepageButton" destination="4FV-Tp-8U7" id="uCo-6m-gda"/>
                         <outlet property="passwordTextField" destination="agG-yo-chN" id="CgB-kq-pFP"/>
                         <outlet property="usernameTextField" destination="USI-Mf-Pk8" id="pP6-Hd-wuf"/>
                     </connections>
@@ -693,6 +695,7 @@
                                                 <connections>
                                                     <action selector="returnButtonTapped:" destination="oWb-yP-CAN" eventType="touchUpInside" id="2EY-dN-Gvc"/>
                                                     <action selector="returnButtonTapped:" destination="JBm-lh-iRA" eventType="touchUpInside" id="NRU-Sd-PsA"/>
+                                                    <segue destination="oWb-yP-CAN" kind="presentation" identifier="ShowLoginSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="UkO-Q9-e1f"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7lt-4U-LPq">
@@ -807,6 +810,14 @@ and save your high score!!
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDx-mh-cVL">
+                                <rect key="frame" x="160" y="735" width="54" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Dismiss"/>
+                                <connections>
+                                    <action selector="dismissViewController:" destination="VYx-xx-LA4" eventType="touchUpInside" id="QI9-qf-J0E"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -825,7 +836,7 @@ and save your high score!!
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="giG-xO-NFC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="853.60000000000002" y="850.49261083743841"/>
+            <point key="canvasLocation" x="-62" y="137"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="5Eg-SQ-Vys">
@@ -850,13 +861,14 @@ and save your high score!!
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sL7-Il-Oaz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1606" y="850"/>
+            <point key="canvasLocation" x="854" y="890"/>
         </scene>
     </scenes>
     <resources>
         <image name="person" catalog="system" width="64" height="58"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mXF-gc-Bi5"/>
+        <segue reference="UkO-Q9-e1f"/>
+        <segue reference="QZd-dW-afw"/>
     </inferredMetricsTieBreakers>
 </document>

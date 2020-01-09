@@ -16,17 +16,26 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var homepageButton: UIButton!
     
     // MARK: - Properties
     
     var networkController: NetworkController?
+    var hasResults: Bool = false
     
     // MARK: - Lifecycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        updateViews()
+    }
+    
+    func updateViews() {
+        if hasResults {
+            print("Hide")
+            homepageButton.isHidden = true
+        }
     }
     
     // MARK: - Actions
@@ -50,9 +59,15 @@ class SignUpViewController: UIViewController {
                         print("Error registering user: \(error)") // This should be an alert as well.
                     }
                 } else {
-                    DispatchQueue.main.async {
-                        self.dismiss(animated: true, completion: nil)
-                    }
+                    self.networkController?.loginUser(username, password: password, completion: { error in
+                        if let error = error {
+                            print("Error logging user in: \(error)")
+                        } else {
+                            DispatchQueue.main.async {
+                                self.dismiss(animated: true, completion: nil)
+                            }
+                        }
+                    })
                 }
             })
         }

@@ -66,7 +66,7 @@ class GameController {
     
     func getTestCelebrities() {
         var celebrity: Celebrity
-        for _ in 1...2 {
+        for _ in 1...3 {
             repeat {
                 let tempCelebrity = allCelebrities.randomElement()
                 guard let safeCelebrity = tempCelebrity else { return }
@@ -78,8 +78,8 @@ class GameController {
     }
     
     func checkAnswer(_ answer: AnswerType, for celebrity: Celebrity) -> Bool {
-        let answerBool = answer == .alive ? 1 : 0
-        switch celebrity.isAlive == answerBool  {
+        let answerBool = answer == .alive ? true : false
+        switch celebrity.isAlive == answerBool {
         case true:
             numberRight += 1
             updateStatus()

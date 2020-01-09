@@ -107,7 +107,7 @@ class NetworkController {
                 completion(error)
                 return
             }
-            print(error, data)
+
             guard let data = data else {
                 completion(NSError())
                 return
@@ -116,45 +116,128 @@ class NetworkController {
             do {
                 let currentUser = try JSONDecoder().decode(UserRepresentation.self, from: data)
                 
-                let context = CoreDataStack.shared.container.newBackgroundContext()
+                let context = CoreDataStack.shared.mainContext
                 
                 self.user = User(userRepresentation: currentUser, context: context)
                 
                 try CoreDataStack.shared.save(context: context)
                 
-                guard let token = currentUser.token/*,
-                    let id = currentUser.id*/ else { throw NSError() }
+                guard let token = currentUser.token else { throw NSError() }
                 self.user?.token = token
-                print(token)
-//                self.user?.id = id
+
             } catch {
                 print("Error decoding user object: \(error)")
                 completion(error)
                 return
             }
-            // TODO - save user to CoreData!!!
             completion(nil)
+            return
         }.resume()
     }
     
-    func fetchHighScores() {
+    func fetchUserHighScores(user: User) {
+        let scoreURL = baseUrl.appendingPathComponent("users/scores/\(Int(user.id))")
+        guard let token = user.token else { return }
+        var request = URLRequest(url: scoreURL)
         
+        request.httpMethod = HTTPMethod.get
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("\(token)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { data, _, error in
+            if let error = error {
+                print(error)
+//                completion(error)
+                return
+            }
+            
+            guard let data = data else {
+//                completion(NSError())
+                return
+            }
+            
+            let moc = CoreDataStack.shared.mainContext
+
+            do {
+                let scores = try JSONDecoder().decode([ScoreRepresentation].self, from: data)
+                _ = scores.compactMap {
+                    Score(scoreRepresentation: $0, context: moc)
+                }
+            } catch {
+                print("Error decoding [Score] objects: \(error)")
+            }
+            
+            do {
+                try moc.save()
+            } catch {
+                print("Error saving Scores: \(error)")
+            }
+        }
     }
     
-    func sendHighScore() {
+    func sendHighScore(for user: User, score: Int, time: Int, completion: @escaping (Error?) -> ()) {
         
+        let scoreURL = baseUrl.appendingPathComponent("users/score")
+        var request = URLRequest(url: scoreURL)
+        print(score, user.id, time)
+        let json = """
+        {
+        "score": \(score),
+        "user_id": \(Int(user.id)),
+        "time": \(time)
+        }
+        """
+        let possibleJSONData = json.data(using: .utf8)
+        guard let jsonData = possibleJSONData else {
+            print("No data!")
+            return
+        }
+        guard let token = user.token else {
+            print("No token!")
+            return
+        }
+        
+        request.httpBody = jsonData
+        request.httpMethod = HTTPMethod.post
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("\(token)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { data, _, error in
+            
+            if let error = error {
+                print(error)
+                completion(error)
+                return
+            }
+            
+            guard let data = data else {
+                completion(NSError())
+                return
+            }
+
+            do {
+                let scoreID = try JSONDecoder().decode(Int.self, from: data)
+                
+                Score(id: scoreID, score: score, userID: Int(user.id), time: time)
+                
+                try CoreDataStack.shared.mainContext.save()
+            } catch {
+                print("Error decoding Score object: \(error)")
+                completion(error)
+                return
+            }
+
+            completion(nil)
+            return
+        }.resume()
     }
     
     func fetchAllCelebrities(completion: @escaping (Result<[CelebrityRepresentation],Error>) -> ()) {
         let celebritiesURL = baseUrl.appendingPathComponent("/celeb/")
         
-        
         var request = URLRequest(url: celebritiesURL.usingHTTPS!)
         request.httpMethod = HTTPMethod.get
         request.setValue("application.json", forHTTPHeaderField: "Content-Type")
-//        request.setValue(user?.token, forHTTPHeaderField: "Authorization")
-        
-
         
         URLSession.shared.dataTask(with: request) { data, _, error in
 
@@ -162,21 +245,13 @@ class NetworkController {
                 print("Error receiving Celebrities data: \(error)")
             }
             
-            print(String(data: data!, encoding: .utf8))
             guard let data = data else {
                 completion(.failure(NSError()))
                 return
             }
-
-            
-
             do {
                 let decoded = try JSONDecoder().decode([CelebrityRepresentation].self, from: data)
-//                self.updateCelebrities(with: decoded)
-                
                 completion(.success(decoded))
-                
-
                 return
             } catch {
                 print("Error decoding [Celebrity] object: \(error)")
@@ -207,16 +282,15 @@ class NetworkController {
                 for celebrity in existingCelebrities {
                     let id = Int(celebrity.id)
                     guard let representation = representationsByID[id] else { continue }
-                    print(celebrity.imageURL)
-                    print("\(celebrity.localImageFile)")
-                    print("Updating: \(celebrity.name)")
+
+                    print("Updating: \(celebrity.name ?? "No one")")
                     celebrity.id = Int16(representation.id)
                     celebrity.name = representation.name
                     celebrity.imageURL = representation.imageURL
                     celebrity.localImageFile = representation.localImageFile
                     celebrity.factoid = representation.factoid
                     celebrity.birthYear = Int16(representation.birthYear)
-                    celebrity.isAlive = Int16(representation.isAlive)
+                    celebrity.isAlive = representation.isAlive// Int16(representation.isAlive)
                     
                     celebritiesToCreate.removeValue(forKey: id)
                     
@@ -227,9 +301,7 @@ class NetworkController {
                 
                 for representation in celebritiesToCreate.values {
                     print("Creating \(representation.name)")
-                    let celebrity = Celebrity(celebrityRepresentation: representation, context: context)
-//                    try CoreDataStack.shared.save(context: context)
-//                    fetchRemoteImageData(for: celebrity)
+                    Celebrity(celebrityRepresentation: representation, context: context)
                 }
                 try CoreDataStack.shared.save(context: context)
             } catch {
@@ -238,12 +310,8 @@ class NetworkController {
         }
     }
     
-    func addCelebrity() {
-
-    } // I may not include this
-    
     func fetchRemoteImageData(for celebrity: Celebrity) {
-        guard let imageURL = celebrity.imageURL else { return }
+        guard let imageURL = celebrity.imageURL?.usingHTTPS else { return }
         
         var request = URLRequest(url: imageURL)
         request.httpMethod = HTTPMethod.get
@@ -253,15 +321,11 @@ class NetworkController {
             if let error = error {
                 print("Error fetching \(celebrity.name ?? "a celebrity")'s image: \(error)")
             }
-            guard let safeData = data,
-                let imageFolderString = self.localImageFolder?.absoluteString else { return }
-//            print(String(data: safeData, encoding: .utf8))
-//            print(safeData)
-            let image = UIImage(data: safeData)
-//            let nsData = NSData(base64Encoded: safeData, options: .ignoreUnknownCharacters)// safeData as NSData
-                
-            // Figure out file type (jpg, png, etc)
-            // move absoluteString to guard let
+            guard let safeData = data/*,
+                let imageFolderString = self.localImageFolder?.absoluteString*/ else { return }
+
+//            let image = UIImage(data: safeData)
+
             guard let url = self.localImageFolder?.appendingPathComponent("local\(celebrity.id).jpg") else { print("yuk")
                 return }
             
@@ -273,53 +337,22 @@ class NetworkController {
             
             celebrity.localImageFile = url.absoluteString
             try? CoreDataStack.shared.mainContext.save()
-//            print(celebrity.localImageFile)
-//            let readData = try? Data(contentsOf: url)
-//            if let safeReadData = readData {
-//                let image = UIImage(data: safeReadData)
-////                print("Image: \(image)")
-//                
-//            } else { print("nope")}
-            
-            //                let successfulWrite = nsData.write(to: url, atomically: true)
-            //                print(successfulWrite)
-            
-            
-            
-            
-            // returns a boolean for success, if it fails, Log the failure
-            
-//            Add property to Celebrity for holding the completed url: \(self.localImageFolder?.absoluteString)/\(celebrity.id).jpg
-                
-//                let localImageURL = self.localImageURL else { return }
-//            self.celebrityPhotosData[celebrity.id] = data
-            
-            
-            
-            
-            // Don't need below if nsData.write() works
-            
-//            do {
-//                let encoded = try PropertyListEncoder().encode(self.celebrityPhotosData)
-//                try encoded.write(to: localImageURL)
-//            } catch {
-//                print("Error saving image data: \(error)")
-//            }
         }.resume()
     }
     
     func fetchImage(for celebrity: Celebrity) -> UIImage {
         if celebrity.localImageFile == nil {
+            print("nil")
             DispatchQueue.main.sync {
-                fetchImage(for: celebrity)
+                fetchRemoteImageData(for: celebrity)
             }
         }
-        
-        guard let imageFile = celebrity.localImageFile,
-            let url = URL(string: imageFile),
+        guard let url = self.localImageFolder?.appendingPathComponent("local\(celebrity.id).jpg"),
             let data = try? Data(contentsOf: url),
-            let image = UIImage(data: data) else { return UIImage() }
+            let image = UIImage(data: data) else {
+                print("no local image")
+                return UIImage() }
         
-        return image // TODO: get the data from the URL, then return the image here
+        return image
     }
 }

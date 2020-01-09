@@ -38,4 +38,6 @@ enum GameLevel: String {
     - username: "iOSUser1", password: "12345678", email: "fanboi@icloud.com"
  
  user135, aPassword, user135@gmail.com
+ user1234, myPassword, user1234@gmail.com
+ RozyCozy, bPassword, RC@gmail.com
  */

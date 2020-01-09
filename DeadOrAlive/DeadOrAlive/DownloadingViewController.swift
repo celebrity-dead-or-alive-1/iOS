@@ -73,6 +73,13 @@ class DownloadingViewController: UIViewController {
         }
     }
     
+    @IBAction func dismissViewController(_ sender: Any) {
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    
     /*
     // MARK: - Navigation
 
