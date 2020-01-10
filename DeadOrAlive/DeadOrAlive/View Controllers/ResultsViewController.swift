@@ -12,10 +12,21 @@ class ResultsViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var remainingTimeLabel: UILabel!
+    @IBOutlet weak var totalScoreLabel: UILabel!
+    @IBOutlet weak var newHighLabel: UILabel!
+    @IBOutlet weak var rankLabel: UILabel!
+    
     
     // MARK: - Properties
     
     var gameController: GameController?
+    var networkController: NetworkController?
+    var numberFormatter: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        return formatter
+    }
     
     // MARK: - Lifecycle Methods
 
@@ -25,12 +36,6 @@ class ResultsViewController: UIViewController {
         updateViews()
     }
     
-    
-    
-    func saveScore() {
-        
-    }
-    
     // MARK: - Actions
     
     @IBAction func startNewGame(_ sender: Any) {
@@ -38,23 +43,28 @@ class ResultsViewController: UIViewController {
     }
     
     func updateViews() {
-        guard let correct = gameController?.numberRight,
-            let total = gameController?.totalAnswered else { return }
-        resultLabel.text = "\(correct) correct out of \(total)"
+        
+        newHighLabel.isHidden = true
+        rankLabel.isHidden = true
+        
+        guard let gameController = gameController else { return }
+        
+        resultLabel.text = "\(gameController.numberRight) correct out of \(gameController.totalAnswered)"
+        remainingTimeLabel.text = "\(String(Int(gameController.totalRemainingTime.rounded()))) Seconds"
+        totalScoreLabel.text = numberFormatter.string(from: NSNumber(value: gameController.getScore(for: gameController.gameLevel)))
     }
-
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == PropertyKeys.signUpSegue {
-            guard let signUpVC = segue.destination as? SignUpViewController else { return }
+            guard let signUpVC = segue.destination as? SignUpViewController,
+            let gameController = gameController else { return }
             signUpVC.hasResults = true
+            signUpVC.score = gameController.getScore(for: gameController.gameLevel)
+            signUpVC.time = gameController.totalRemainingTime
+            signUpVC.networkController = networkController
         }
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    
-
 }

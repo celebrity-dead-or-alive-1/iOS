@@ -22,12 +22,15 @@ class SignUpViewController: UIViewController {
     
     var networkController: NetworkController?
     var hasResults: Bool = false
+    var score: Int?
+    var time: Double?
     
     // MARK: - Lifecycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        emailTextField.delegate = self
         updateViews()
     }
     
@@ -63,6 +66,7 @@ class SignUpViewController: UIViewController {
                         if let error = error {
                             print("Error logging user in: \(error)")
                         } else {
+                            self.sendScore()
                             DispatchQueue.main.async {
                                 self.dismiss(animated: true, completion: nil)
                             }
@@ -71,6 +75,17 @@ class SignUpViewController: UIViewController {
                 }
             })
         }
+    }
+    
+    func sendScore() {
+        guard let score = score,
+            let time = time,
+            let user = networkController?.user else { return }
+        networkController?.sendHighScore(for: user, score: score, time: Int(time), completion: { error in
+            if let error = error {
+                print("Error sending score: \(error)")
+            }
+        })
     }
     
     @IBAction func returnButtonTapped(_ sender: Any) {
@@ -87,4 +102,11 @@ class SignUpViewController: UIViewController {
     }
     */
 
+}
+
+extension SignUpViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        createAcountTapped(textField)
+        return true
+    }
 }

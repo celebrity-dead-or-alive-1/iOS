@@ -26,6 +26,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
         updateViews()
     }
     
@@ -77,4 +79,11 @@ class LoginViewController: UIViewController {
     }
     */
 
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        loginButtonTapped(textField)
+        return true
+    }
 }

@@ -40,7 +40,6 @@ class ChooseQuizViewController: UIViewController {
         super.viewDidLoad()
 //        let userDefaults = UserDefaults.standard
 //        userDefaults.set(false, forKey: PropertyKeys.downloadedKey)
-        testScore()
         updateViews()
     }
     

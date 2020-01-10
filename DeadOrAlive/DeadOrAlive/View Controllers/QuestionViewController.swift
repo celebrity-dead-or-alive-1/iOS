@@ -170,10 +170,18 @@ class QuestionViewController: UIViewController {
             aliveButton.isEnabled = true
             updateViews()
         } else {
-            gameController.getScore(for: gameController.gameLevel
-            )
+            sendScore()
             performSegue(withIdentifier: PropertyKeys.restultsSegue, sender: nil)
         }
+    }
+    
+    func sendScore() {
+        guard let user = user else { return }
+        networkController?.sendHighScore(for: user, score: gameController.getScore(for: gameController.gameLevel), time: Int(gameController.totalRemainingTime), completion: { error in
+            if let error = error {
+                print("Error sending score: \(error)")
+            }
+        })
     }
     
     // MARK: - Navigation
@@ -183,9 +191,8 @@ class QuestionViewController: UIViewController {
         
         guard let resultVC = segue.destination as? ResultsViewController else { return }
         resultVC.gameController = gameController
+        resultVC.networkController = networkController
     }
-    
-
 }
 
 extension QuestionViewController: CountdownDelegate {

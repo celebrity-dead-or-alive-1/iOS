@@ -126,7 +126,7 @@ class GameController {
         var score = 0
         
         let timeMultiplier = Int((totalRemainingTime / Double(totalAnswered)).rounded()) + 1
-        let percent = Int((Double(numberRight) / Double(totalAnswered)).rounded()) * 3
+        let percent = Int((Double(numberRight) / Double(totalAnswered)).rounded()) + 1 * 3
         score = percent * timeMultiplier * 10_000
         print("Score: \(score)")
         
