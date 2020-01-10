@@ -25,6 +25,12 @@ class ResultsViewController: UIViewController {
         updateViews()
     }
     
+    
+    
+    func saveScore() {
+        
+    }
+    
     // MARK: - Actions
     
     @IBAction func startNewGame(_ sender: Any) {

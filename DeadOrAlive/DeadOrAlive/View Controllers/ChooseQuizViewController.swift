@@ -31,7 +31,6 @@ class ChooseQuizViewController: UIViewController {
         let possibleUsers = try? moc.fetch(fetchRequest)
         guard let users = possibleUsers,
             !users.isEmpty else { return nil }
-        print(users[0].username)
         return users[0]
     }
     
@@ -39,16 +38,16 @@ class ChooseQuizViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let userDefaults = UserDefaults.standard
-        userDefaults.set(false, forKey: PropertyKeys.downloadedKey)
+//        let userDefaults = UserDefaults.standard
+//        userDefaults.set(false, forKey: PropertyKeys.downloadedKey)
         testScore()
         updateViews()
     }
     
     func testScore() {
         guard let user = user else { return }
-        networkController.sendHighScore(for: user, score: 5, time: 1) { error in
-            if let error = error {
+        networkController.sendHighScore(for: user, score: 50, time: 1) { error in
+            if let _ = error {
                 print("See error above.")
             }
         }
@@ -62,11 +61,11 @@ class ChooseQuizViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let userDefaults = UserDefaults.standard
-        let celebritiesDownloaded = userDefaults.bool(forKey: PropertyKeys.downloadedKey)
-        if !celebritiesDownloaded {
-            performSegue(withIdentifier: PropertyKeys.downloadSegue, sender: self)
-        }
+//        let userDefaults = UserDefaults.standard
+//        let celebritiesDownloaded = userDefaults.bool(forKey: PropertyKeys.downloadedKey)
+//        if !celebritiesDownloaded {
+//            performSegue(withIdentifier: PropertyKeys.downloadSegue, sender: self)
+//        }
     }
 
     // MARK: - Actions
@@ -112,7 +111,6 @@ class ChooseQuizViewController: UIViewController {
             guard let username = user.username else { return }
             loginButton.setTitle("\(username)", for: .normal)
             signUpButton.setTitle("Log Out", for: .normal)
-//            signUpButton.isHidden = true
         }
     }
     
@@ -124,26 +122,18 @@ class ChooseQuizViewController: UIViewController {
         case PropertyKeys.easySegue, PropertyKeys.mediumSegue, PropertyKeys.hardSegue, PropertyKeys.customSegue:
             guard let questionVC = segue.destination as? QuestionViewController else { return }
             questionVC.networkController = networkController
+            switch segue.identifier {
+            case PropertyKeys.easySegue: questionVC.gameLevel = "Easy"
+            case PropertyKeys.mediumSegue: questionVC.gameLevel = "Medium"
+            default: questionVC.gameLevel = "Hard"
+            }
         case PropertyKeys.signUpSegue:
             guard let signUpVC = segue.destination as? SignUpViewController else { return }
             signUpVC.networkController = networkController
-        case PropertyKeys.highScoreSegue:
-            break
+//        case PropertyKeys.highScoreSegue:
+//            break
         default: return
         }
     }
-    
-//    private func levelFor(segue: UIStoryboardSegue) -> String {
-//        switch segue.identifier {
-//        case PropertyKeys.easySegue:
-//            return GameLevel.easy.rawValue
-//        case PropertyKeys.mediumSegue:
-//            return GameLevel.medium.rawValue
-//        case PropertyKeys.hardSegue:
-//            return GameLevel.hard.rawValue
-//        default:
-//            return "None" // Custom!!!
-//        }
-//    }
 }
 

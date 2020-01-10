@@ -21,6 +21,7 @@
 		C056012623B549C6001CDB3C /* CelebrityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C056012523B549C6001CDB3C /* CelebrityController.swift */; };
 		C056012823B563C3001CDB3C /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C056012723B563C3001CDB3C /* HTTPMethod.swift */; };
 		C056012A23B56437001CDB3C /* URL+Secure.swift in Sources */ = {isa = PBXBuildFile; fileRef = C056012923B56437001CDB3C /* URL+Secure.swift */; };
+		C05A0D9623C7D9870053E549 /* ScoresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05A0D9523C7D9870053E549 /* ScoresTableViewController.swift */; };
 		C05A3E0423B64EBD00A623E9 /* AveriaSansLibre-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C05A3DFD23B64EBD00A623E9 /* AveriaSansLibre-Italic.ttf */; };
 		C05A3E0523B64EBD00A623E9 /* AveriaSansLibre-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C05A3DFE23B64EBD00A623E9 /* AveriaSansLibre-Light.ttf */; };
 		C05A3E0623B64EBD00A623E9 /* AveriaSansLibre-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C05A3DFF23B64EBD00A623E9 /* AveriaSansLibre-Bold.ttf */; };
@@ -37,6 +38,7 @@
 		C06DD84023B42B6E00A015EE /* PropertyKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06DD83F23B42B6E00A015EE /* PropertyKeys.swift */; };
 		C06DD84223B4436600A015EE /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06DD84123B4436600A015EE /* GameController.swift */; };
 		C06DD84623B443E000A015EE /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06DD84523B443E000A015EE /* QuestionViewController.swift */; };
+		C080F23F23C80D900007A6EE /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = C080F23E23C80D900007A6EE /* Countdown.swift */; };
 		C0A903AB23C53DD700424FCC /* DownloadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A903AA23C53DD700424FCC /* DownloadingViewController.swift */; };
 		C0D9625D23C040A900DED697 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D9625C23C040A900DED697 /* LoginViewController.swift */; };
 		C0F94C8123C1509B00740F88 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F94C8023C1509B00740F88 /* SignUpViewController.swift */; };
@@ -69,6 +71,7 @@
 		C056012523B549C6001CDB3C /* CelebrityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrityController.swift; sourceTree = "<group>"; };
 		C056012723B563C3001CDB3C /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		C056012923B56437001CDB3C /* URL+Secure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Secure.swift"; sourceTree = "<group>"; };
+		C05A0D9523C7D9870053E549 /* ScoresTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresTableViewController.swift; sourceTree = "<group>"; };
 		C05A3DFD23B64EBD00A623E9 /* AveriaSansLibre-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AveriaSansLibre-Italic.ttf"; sourceTree = "<group>"; };
 		C05A3DFE23B64EBD00A623E9 /* AveriaSansLibre-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AveriaSansLibre-Light.ttf"; sourceTree = "<group>"; };
 		C05A3DFF23B64EBD00A623E9 /* AveriaSansLibre-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AveriaSansLibre-Bold.ttf"; sourceTree = "<group>"; };
@@ -87,6 +90,7 @@
 		C06DD83F23B42B6E00A015EE /* PropertyKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyKeys.swift; sourceTree = "<group>"; };
 		C06DD84123B4436600A015EE /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		C06DD84523B443E000A015EE /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
+		C080F23E23C80D900007A6EE /* Countdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
 		C0A903AA23C53DD700424FCC /* DownloadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DownloadingViewController.swift; path = DeadOrAlive/DownloadingViewController.swift; sourceTree = SOURCE_ROOT; };
 		C0D9625C23C040A900DED697 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = DeadOrAlive/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		C0F94C8023C1509B00740F88 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -199,6 +203,7 @@
 				C06DD82E23B3E53000A015EE /* ChooseQuizViewController.swift */,
 				C06DD84523B443E000A015EE /* QuestionViewController.swift */,
 				C036EB1123BFC3AF0037E1FF /* ResultsViewController.swift */,
+				C05A0D9523C7D9870053E549 /* ScoresTableViewController.swift */,
 				C0D9625C23C040A900DED697 /* LoginViewController.swift */,
 				C0F94C8023C1509B00740F88 /* SignUpViewController.swift */,
 				C0A903AA23C53DD700424FCC /* DownloadingViewController.swift */,
@@ -221,6 +226,7 @@
 				C06DD83F23B42B6E00A015EE /* PropertyKeys.swift */,
 				C056012923B56437001CDB3C /* URL+Secure.swift */,
 				C056012723B563C3001CDB3C /* HTTPMethod.swift */,
+				C080F23E23C80D900007A6EE /* Countdown.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -349,8 +355,10 @@
 				C06DD82F23B3E53000A015EE /* ChooseQuizViewController.swift in Sources */,
 				C06DD82B23B3E53000A015EE /* AppDelegate.swift in Sources */,
 				C048DA9323C3EC3C00D97FCB /* ScoreRepresentation.swift in Sources */,
+				C05A0D9623C7D9870053E549 /* ScoresTableViewController.swift in Sources */,
 				C06DD84623B443E000A015EE /* QuestionViewController.swift in Sources */,
 				C056012623B549C6001CDB3C /* CelebrityController.swift in Sources */,
+				C080F23F23C80D900007A6EE /* Countdown.swift in Sources */,
 				C048DA8B23C3EBF000D97FCB /* User+Convenience.swift in Sources */,
 				C06DD84023B42B6E00A015EE /* PropertyKeys.swift in Sources */,
 				C056012823B563C3001CDB3C /* HTTPMethod.swift in Sources */,

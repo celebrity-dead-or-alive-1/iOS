@@ -342,10 +342,10 @@ class NetworkController {
     
     func fetchImage(for celebrity: Celebrity) -> UIImage {
         if celebrity.localImageFile == nil {
-            print("nil")
-            DispatchQueue.main.sync {
-                fetchRemoteImageData(for: celebrity)
-            }
+            print("\(celebrity.name!)'s picture doesn't exist")
+//            DispatchQueue.main.sync {
+//                fetchRemoteImageData(for: celebrity)
+//            }
         }
         guard let url = self.localImageFolder?.appendingPathComponent("local\(celebrity.id).jpg"),
             let data = try? Data(contentsOf: url),

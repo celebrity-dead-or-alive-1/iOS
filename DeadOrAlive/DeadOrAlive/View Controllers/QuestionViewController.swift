@@ -26,18 +26,28 @@ class QuestionViewController: UIViewController {
     // MARK: - Properties
     
     let gameController = GameController()
+    let countdown = Countdown()
     var networkController: NetworkController?
     var celebrity: Celebrity?
     var user: User?
+    var gameLevel = ""
     var totalQuestions: Int?
+    var startTime = CACurrentMediaTime()
+    var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "s.S"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        return formatter
+    }
     
     // MARK: - Lifecycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-
+//        GameController. =
+        countdown.duration = 5
+        countdown.delegate = self
         setTotalQuestions()
         celebrity = gameController.getRandomCelebrity()
         updateViews()
@@ -68,6 +78,8 @@ class QuestionViewController: UIViewController {
         }
     }
     
+    
+    
     func updateViews() {
         
         correctFilterView.isHidden = true
@@ -82,23 +94,29 @@ class QuestionViewController: UIViewController {
         if let imagedata = gameController.celebrityPhotosData[Int(celebrity.id)] {
             imageView.image = UIImage(data: imagedata)
         }
-        levelLabel.text = gameController.gameLevel.rawValue// level
+        levelLabel.text = gameLevel// level
         numberLabel.text = "\(gameController.totalAnswered/*answeredQuestions*/ + 1)/\(totalQuestions ?? 0)"
-        timeLabel.text = "N/A"
-        
         nameLabel.text = celebrity.name
+        
+        countdown.start()
     }
+    
+    private func string(from duration: TimeInterval) -> String {
+        let date = Date(timeIntervalSinceReferenceDate: duration)
+        return dateFormatter.string(from: date)
+    }
+    
     
     func setImage(for celebrity: Celebrity) {
         if let image = networkController?.fetchImage(for: celebrity) {
             imageView.image = image
         }
-        
     }
     
     // MARK: - Actions
     
     @IBAction func answerTapped(_ sender: UIButton) {
+        countdown.reset()
         guard let celebrity = celebrity else { return }
         let answer: AnswerType = sender == deadButton ? .dead : .alive
         
@@ -131,6 +149,19 @@ class QuestionViewController: UIViewController {
             correctFilterView.isHidden = false
         }
     }
+    
+    func updateTimeView() {
+        
+        
+        switch countdown.state {
+        case .started:
+            timeLabel.text = string(from: countdown.timeRemaining)
+        case .finished:
+            timeLabel.text = string(from: 0)
+        case .reset:
+            timeLabel.text = string(from: countdown.duration)
+        }
+    }
 
     @IBAction func continueQuiz(_ sender: Any) {
         if gameController.gameStatus == .active {
@@ -153,4 +184,15 @@ class QuestionViewController: UIViewController {
     }
     
 
+}
+
+extension QuestionViewController: CountdownDelegate {
+    func countdownDidUpdate(timeRemaining: TimeInterval) {
+        updateTimeView()
+    }
+    
+    func countdownDidFinish() {
+        updateTimeView()
+//        showAlert()
+    }
 }

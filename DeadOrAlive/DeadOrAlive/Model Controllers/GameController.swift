@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 class GameController {
     
@@ -15,6 +16,8 @@ class GameController {
     
     var gameStatus: GameStatus = .active
     var gameLevel: GameLevel = .easy
+    var startTime = CACurrentMediaTime()
+    var totalRemainingTime = 0.0
     var numberRight: Int = 0
     var numberWrong: Int = 0
     var totalAnswered: Int {
@@ -61,24 +64,44 @@ class GameController {
         
         let index = Int.random(in: 0..<testCelebrities.count)
         
+        
+        startTime = CACurrentMediaTime()
         return testCelebrities.remove(at: index)
     }
     
     func getTestCelebrities() {
+        print(allCelebrities.count)
+//        printCelebInfo()
         var celebrity: Celebrity
-        for _ in 1...3 {
+        for _ in 1...10 {
             repeat {
                 let tempCelebrity = allCelebrities.randomElement()
                 guard let safeCelebrity = tempCelebrity else { return }
                 celebrity = safeCelebrity
-            
+//                print("*", celebrity.name)
+//                for celebrity in testCelebrities {
+//                    print(celebrity.name)
+//                }
             } while testCelebrities.contains(celebrity)
+//            print("added")
             testCelebrities.append(celebrity)
         }
     }
     
+//    func printCelebInfo() {
+//        for celebrity in allCelebrities {
+//            print("\(celebrity.id), \(celebrity.birthYear), \(celebrity.isAlive), \(celebrity.name)")
+//        }
+//    }
+    
     func checkAnswer(_ answer: AnswerType, for celebrity: Celebrity) -> Bool {
+        let endTime = CACurrentMediaTime()
+        
+        if endTime - startTime < 5 {
+            totalRemainingTime += 5.0 - (endTime - startTime)
+        }
         let answerBool = answer == .alive ? true : false
+        print(totalRemainingTime)
         switch celebrity.isAlive == answerBool {
         case true:
             numberRight += 1

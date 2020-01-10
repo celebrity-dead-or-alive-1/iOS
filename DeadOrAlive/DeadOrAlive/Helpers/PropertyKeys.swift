@@ -19,6 +19,8 @@ struct PropertyKeys {
     static let restultsSegue = "ShowResultsSegue"
     static let downloadSegue = "DownloadingSegue"
     
+    static let scoreCell = "ScoreCell"
+    
     static let imagePathComponent = "celebrityImage"
     
     static let downloadedKey = "CelebritiesDownloadedKeys"

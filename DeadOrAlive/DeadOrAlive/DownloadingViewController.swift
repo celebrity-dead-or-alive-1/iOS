@@ -19,7 +19,7 @@ class DownloadingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        deleteCelebs()
+        deleteCelebs()
         fetchAllCelebrities()
     }
     
