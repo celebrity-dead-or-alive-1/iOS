@@ -694,7 +694,7 @@
                                                 <connections>
                                                     <action selector="returnButtonTapped:" destination="oWb-yP-CAN" eventType="touchUpInside" id="2EY-dN-Gvc"/>
                                                     <action selector="returnButtonTapped:" destination="JBm-lh-iRA" eventType="touchUpInside" id="NRU-Sd-PsA"/>
-                                                    <segue destination="oWb-yP-CAN" kind="presentation" identifier="ShowLoginSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="UkO-Q9-e1f"/>
+                                                    <segue destination="oWb-yP-CAN" kind="presentation" identifier="ShowLoginSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="UkO-Q9-e1f"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7lt-4U-LPq">
@@ -915,7 +915,7 @@ and save your high score!!
         <image name="person" catalog="system" width="64" height="58"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="usw-Gq-1zP"/>
+        <segue reference="UkO-Q9-e1f"/>
         <segue reference="QZd-dW-afw"/>
     </inferredMetricsTieBreakers>
 </document>

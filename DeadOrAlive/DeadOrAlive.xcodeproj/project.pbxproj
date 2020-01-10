@@ -39,6 +39,7 @@
 		C06DD84223B4436600A015EE /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06DD84123B4436600A015EE /* GameController.swift */; };
 		C06DD84623B443E000A015EE /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06DD84523B443E000A015EE /* QuestionViewController.swift */; };
 		C080F23F23C80D900007A6EE /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = C080F23E23C80D900007A6EE /* Countdown.swift */; };
+		C080F24723C82D860007A6EE /* DeadOrAliveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C080F24623C82D860007A6EE /* DeadOrAliveUITests.swift */; };
 		C0A903AB23C53DD700424FCC /* DownloadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A903AA23C53DD700424FCC /* DownloadingViewController.swift */; };
 		C0D9625D23C040A900DED697 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D9625C23C040A900DED697 /* LoginViewController.swift */; };
 		C0F94C8123C1509B00740F88 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F94C8023C1509B00740F88 /* SignUpViewController.swift */; };
@@ -46,6 +47,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		C056011D23B471BD001CDB3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C06DD81F23B3E53000A015EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C06DD82623B3E53000A015EE;
+			remoteInfo = DeadOrAlive;
+		};
+		C080F24923C82D860007A6EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C06DD81F23B3E53000A015EE /* Project object */;
 			proxyType = 1;
@@ -91,6 +99,9 @@
 		C06DD84123B4436600A015EE /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		C06DD84523B443E000A015EE /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		C080F23E23C80D900007A6EE /* Countdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
+		C080F24423C82D860007A6EE /* DeadOrAliveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeadOrAliveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C080F24623C82D860007A6EE /* DeadOrAliveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadOrAliveUITests.swift; sourceTree = "<group>"; };
+		C080F24823C82D860007A6EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0A903AA23C53DD700424FCC /* DownloadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DownloadingViewController.swift; path = DeadOrAlive/DownloadingViewController.swift; sourceTree = SOURCE_ROOT; };
 		C0D9625C23C040A900DED697 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = DeadOrAlive/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		C0F94C8023C1509B00740F88 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +116,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C06DD82423B3E53000A015EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C080F24123C82D860007A6EE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -165,6 +183,7 @@
 			children = (
 				C06DD82923B3E53000A015EE /* DeadOrAlive */,
 				C056011923B471BD001CDB3C /* DeadOrAliveTests */,
+				C080F24523C82D860007A6EE /* DeadOrAliveUITests */,
 				C06DD82823B3E53000A015EE /* Products */,
 				C05A3DFC23B64EBD00A623E9 /* averia-sans-libre */,
 			);
@@ -175,6 +194,7 @@
 			children = (
 				C06DD82723B3E53000A015EE /* DeadOrAlive.app */,
 				C056011823B471BD001CDB3C /* DeadOrAliveTests.xctest */,
+				C080F24423C82D860007A6EE /* DeadOrAliveUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -231,6 +251,15 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		C080F24523C82D860007A6EE /* DeadOrAliveUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C080F24623C82D860007A6EE /* DeadOrAliveUITests.swift */,
+				C080F24823C82D860007A6EE /* Info.plist */,
+			);
+			path = DeadOrAliveUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -269,13 +298,31 @@
 			productReference = C06DD82723B3E53000A015EE /* DeadOrAlive.app */;
 			productType = "com.apple.product-type.application";
 		};
+		C080F24323C82D860007A6EE /* DeadOrAliveUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C080F24B23C82D860007A6EE /* Build configuration list for PBXNativeTarget "DeadOrAliveUITests" */;
+			buildPhases = (
+				C080F24023C82D860007A6EE /* Sources */,
+				C080F24123C82D860007A6EE /* Frameworks */,
+				C080F24223C82D860007A6EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C080F24A23C82D860007A6EE /* PBXTargetDependency */,
+			);
+			name = DeadOrAliveUITests;
+			productName = DeadOrAliveUITests;
+			productReference = C080F24423C82D860007A6EE /* DeadOrAliveUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		C06DD81F23B3E53000A015EE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1120;
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = morse;
 				TargetAttributes = {
@@ -285,6 +332,10 @@
 					};
 					C06DD82623B3E53000A015EE = {
 						CreatedOnToolsVersion = 11.2.1;
+					};
+					C080F24323C82D860007A6EE = {
+						CreatedOnToolsVersion = 11.3;
+						TestTargetID = C06DD82623B3E53000A015EE;
 					};
 				};
 			};
@@ -303,6 +354,7 @@
 			targets = (
 				C06DD82623B3E53000A015EE /* DeadOrAlive */,
 				C056011723B471BD001CDB3C /* DeadOrAliveTests */,
+				C080F24323C82D860007A6EE /* DeadOrAliveUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -329,6 +381,13 @@
 				C06DD83423B3E53100A015EE /* Assets.xcassets in Resources */,
 				C06DD83223B3E53000A015EE /* Main.storyboard in Resources */,
 				C05A3E0A23B64EBD00A623E9 /* AveriaSansLibre-LightItalic.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C080F24223C82D860007A6EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +433,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C080F24023C82D860007A6EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C080F24723C82D860007A6EE /* DeadOrAliveUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -381,6 +448,11 @@
 			isa = PBXTargetDependency;
 			target = C06DD82623B3E53000A015EE /* DeadOrAlive */;
 			targetProxy = C056011D23B471BD001CDB3C /* PBXContainerItemProxy */;
+		};
+		C080F24A23C82D860007A6EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C06DD82623B3E53000A015EE /* DeadOrAlive */;
+			targetProxy = C080F24923C82D860007A6EE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -592,6 +664,42 @@
 			};
 			name = Release;
 		};
+		C080F24C23C82D860007A6EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DeadOrAliveUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = git.DeadOrAliveUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DeadOrAlive;
+			};
+			name = Debug;
+		};
+		C080F24D23C82D860007A6EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DeadOrAliveUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = git.DeadOrAliveUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DeadOrAlive;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -618,6 +726,15 @@
 			buildConfigurations = (
 				C06DD83C23B3E53100A015EE /* Debug */,
 				C06DD83D23B3E53100A015EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C080F24B23C82D860007A6EE /* Build configuration list for PBXNativeTarget "DeadOrAliveUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C080F24C23C82D860007A6EE /* Debug */,
+				C080F24D23C82D860007A6EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

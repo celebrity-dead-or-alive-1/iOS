@@ -73,7 +73,7 @@ class GameController {
         print(allCelebrities.count)
 //        printCelebInfo()
         var celebrity: Celebrity
-        for _ in 1...10 {
+        for _ in 1...3 {
             repeat {
                 let tempCelebrity = allCelebrities.randomElement()
                 guard let safeCelebrity = tempCelebrity else { return }
@@ -121,6 +121,18 @@ class GameController {
         }
     }
     
+    func getScore(for difficulty: GameLevel) -> Int {
+        
+        var score = 0
+        
+        let timeMultiplier = Int((totalRemainingTime / Double(totalAnswered)).rounded()) + 1
+        let percent = Int((Double(numberRight) / Double(totalAnswered)).rounded()) * 3
+        score = percent * timeMultiplier * 10_000
+        print("Score: \(score)")
+        
+        return score
+    }
+    
     func fetchTestCelebrityPhotos() {
         do {
             let fileManager = FileManager.default
@@ -135,11 +147,3 @@ class GameController {
         }
     }
 }
-
-
-
-
-
-
-
-

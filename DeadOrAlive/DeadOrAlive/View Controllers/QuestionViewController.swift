@@ -170,6 +170,8 @@ class QuestionViewController: UIViewController {
             aliveButton.isEnabled = true
             updateViews()
         } else {
+            gameController.getScore(for: gameController.gameLevel
+            )
             performSegue(withIdentifier: PropertyKeys.restultsSegue, sender: nil)
         }
     }
@@ -193,6 +195,14 @@ extension QuestionViewController: CountdownDelegate {
     
     func countdownDidFinish() {
         updateTimeView()
-//        showAlert()
+        
+        guard let celebrity = celebrity else { return }
+        
+        switch celebrity.isAlive {
+        case true: displayResult(for: gameController.checkAnswer(.dead, for: celebrity))
+        case false: displayResult(for: gameController.checkAnswer(.alive, for: celebrity))
+        }
+        
+        
     }
 }
